@@ -1,0 +1,204 @@
+// Import any fonts
+//   example google font import:
+//@import url(https://fonts.googleapis.com/css?family=Font+One|Font+Two:400,800,700,600,300,200,100,500,900);
+
+//   example font within / assets/fonts
+//@font-face {
+//    font-family: 'example-second-font';
+//    src: font-url('branding/font-within-assets-fonts.woff2') format('woff2'),
+//         font-url('branding/font-within-assets-fonts.woff') format('woff');
+//    font-weight: normal;
+//    font-style: normal;
+//}
+
+////////////////////////////////////////////////////////////////////////////////
+// Font Variables
+////////////////////////////////////////////////////////////////////////////////
+//$example-font: 'Example Font', serif;
+//$example-second-font: 'Example Font Two', serif;
+
+////////////////////////////////////////////////////////////////////////////////
+// Font Family
+////////////////////////////////////////////////////////////////////////////////
+//.font-example-font { font-family: $example-font; }
+
+////////////////////////////////////////////////////////////////////////////////
+//Font Color
+////////////////////////////////////////////////////////////////////////////////
+.font-white       { color: $white; }
+.font-black       { color: $black; }
+
+////////////////////////////////////////////////////////////////////////////////
+// Font Weight
+////////////////////////////////////////////////////////////////////////////////
+.thin,
+.font-thin,
+.fw-thin,
+.fw-100 {
+  font-weight: 100;
+}
+
+.extra-light,
+.font-extra-light,
+.fw-extra-light,
+.fw-200 {
+  font-weight: 200;
+}
+
+.light,
+.font-light,
+.fw-light,
+.fw-300 {
+  font-weight: 300;
+}
+
+.medium,
+.font-medium,
+.fw-medium,
+.fw-500 {
+  font-weight: 500;
+}
+
+.semi-bold,
+.font-semi-bold,
+.fw-semi-bold,
+.fw-600 {
+  font-weight: 600;
+}
+
+.bold,
+.font-bold,
+.fw-bold,
+.fw-700 {
+  font-weight: 700;
+}
+
+.black,
+.font-black,
+.fw-black,
+.fw-800 {
+  font-weight: 800;
+}
+
+.ultra-black,
+.font-ultra-black,
+.fw-ultra-black,
+.fw-900 {
+  font-weight: 900;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Font Style
+////////////////////////////////////////////////////////////////////////////////
+.italic,
+.font-italic,
+.font-style-italic,
+.fs-i {
+  font-style: italic;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Font Position
+////////////////////////////////////////////////////////////////////////////////
+.text-align-left,
+.font-left,
+.ta-l {
+  text-align: left;
+}
+
+.text-align-right,
+.font-right,
+.ta-r {
+  text-align: right;
+}
+
+.text-align-jusitfy,
+.font-justified,
+.ta-j {
+  text-align: justify;
+}
+
+.text-align-center,
+.font-centered,
+.ta-c {
+  text-align: center;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Font Size
+////////////////////////////////////////////////////////////////////////////////
+@for $i from 1 through 180 {
+  .fz-#{$i} {
+    font-size: $i + px;
+  }
+
+  .font-#{$i} {
+    font-size: $i + px;
+  }
+
+  .lh-#{$i} {
+    line-height: $i + px;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Heading Styles
+////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Other Global Typography Styles
+////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Default Global Font Style
+////////////////////////////////////////////////////////////////////////////////
+
+html { font-size: 1em; }
+
+body {
+  font-weight: 400;
+  line-height: 1.45;
+  color: $font;
+  background-color: $white;
+}
+
+p { margin-bottom: 1.3em; }
+
+a {
+  display: inline-block;
+
+  // &:hover {
+  // }
+
+  // &:active {
+  // }
+
+  // &:visited {
+  // }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 1.414em 0 .5em;
+  font-weight: inherit;
+  line-height: 1.2;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 3.157em;
+}
+
+h2 { font-size: 2.369em; }
+
+h3 { font-size: 1.777em; }
+
+h4 { font-size: 1.333em; }
+
+small {
+  font-size: .75em;
+}

@@ -1,0 +1,28 @@
+# Database names for rails db:create
+DEV_DATABASE_NAME:        'site_template_dev'
+TEST_DATABASE_NAME:       'site_template_test'
+PRODUCTION_DATABASE_NAME: 'site_template_production'
+
+# Default meta title and description for site
+DEFAULT_META_TITLE:       'Site Template'
+DEFAULT_META_DESCRIPTION: 'Site Template Description'
+
+development:
+  SITE_ENV: 'development'
+
+  # Action Mailer information
+  ACTION_MAILER_DEFAULT_URL:  ''
+  ACTION_MAILER_ASSET_HOST:   ''
+  ACTION_MAILER_ADDRESS:      ''
+  ACTION_MAILER_USER_NAME:    ''
+  ACTION_MAILER_PASSWORD:     ''
+  ACTION_MAILER_DOMAIN:       ''
+
+production:
+  SITE_ENV: 'production'
+
+staging:
+  SITE_ENV: 'staging'
+
+test:
+  SITE_ENV: 'test'

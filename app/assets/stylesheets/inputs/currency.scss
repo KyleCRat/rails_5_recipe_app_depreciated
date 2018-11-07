@@ -1,0 +1,34 @@
+.currency-input {
+  display: block;
+
+  .symbol-wrapper {
+    position: absolute;
+    z-index: 10;
+    display: block;
+    width: 30px;
+    height: 100%;
+    background-color: $off-white;
+    border: 1px solid $medium-gray;
+
+    abbr {
+      @include abs-center;
+      color: $dark-gray;
+      border-color: $medium-gray;
+    }
+  }
+
+  input {
+    &.currency {
+      z-index: 1;
+      padding-left: 35px;
+    }
+  }
+}
+
+.error {
+  &.symbol-wrapper {
+    margin-bottom: 0;
+    border: 1px solid default-theme-color('error') !important;
+    transition: border .5s;
+  }
+}

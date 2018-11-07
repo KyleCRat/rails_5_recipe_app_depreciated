@@ -1,0 +1,24 @@
+// !!!This should only import files that are included in the skeleton app!!!
+//   Do not include any site specific css or imports in this file!
+
+// Clearfix mixin
+//   Useage:
+//   .conatiner-with-floated-children {
+//     @exend %clearfix;
+//   }
+%clearfix {
+  *zoom: 1;
+
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.clearfix {
+  @extend %clearfix;
+}

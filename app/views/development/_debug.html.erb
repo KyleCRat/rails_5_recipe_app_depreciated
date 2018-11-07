@@ -1,0 +1,36 @@
+<%= content_tag(:section, id: "debug", class: "row") do %>
+  <%= content_tag(:div, id: "debug-screen-width-wrapper") do %>
+    <button type="button" name="debug-button" id="debug-button">&times;</button>
+    <div>Screen Width: <span id="debug-screen-width">Loading Width...</span></div>
+    <div>Screen Height: <span id="debug-screen-height">Loading Height...</span></div>
+    <div class="small-12 show-for-small-only">Breakpoint: <span> Small (0px - 449px)</span></div>
+    <div class="small-12 show-for-medium-only">Breakpoint: <span>Medium (450px - 767px)</span></div>
+    <div class="small-12 show-for-large-only">Breakpoint: <span>Large (768px - 1023px)</span></div>
+    <div class="small-12 show-for-xlarge-only">Breakpoint: <span>XLarge (1024px - 1199px)</span></div>
+    <div class="small-12 show-for-xxlarge-only">Breakpoint: <span>XXLarge (1200px - 1439px)</span></div>
+    <div class="small-12 show-for-huge-only">Breakpoint: <span>Huge (1440px +)</span></div>
+    <div>Site Version: <span id="site-version"><%= ::VERSION %></span></div>
+  <% end %>
+  Color Palate:
+  <ul class="color-palate clearfix">
+    <li class="palate-1"></li>
+    <li class="palate-2"></li>
+    <li class="palate-3"></li>
+    <li class="palate-4"></li>
+    <li class="palate-5"></li>
+    <li class="palate-6"></li>
+    <li class="palate-7"></li>
+    <li class="palate-8"></li>
+    <li class="palate-9"></li>
+  </ul>
+  <%= debug(params) %>
+  <table>
+  <thead><tr><td>Variable</td><td>Value</td></tr></thead>
+    <tbody>
+      <% ENV.each do |k,v| %>
+        <% next if k.include?('_FIGARO') %>
+        <tr><td><%= k %></td><td><%= v %></td></tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end if Rails.env.development? || (!Rails.env.production? && ENV['debug_mode']) %>

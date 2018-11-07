@@ -1,0 +1,151 @@
+@import 'theme';
+
+// This file takes the theme created in the settings/theme/theme.scss and
+//   crates many helper classes to use throughout the HTML.
+//
+//   Current classes are:
+//
+//   .theme-background-{name}
+//   - background-color
+//
+//   .theme-background-hover-{color}
+//   - background-color on hover
+//
+//   .theme-background-hover-darken-{color}
+//   - background-color on hover darkened by 10%
+//
+//   .theme-background-ba-{color}
+//   - background-color of before and after elements
+//
+//   .theme-background-ba-hover-{color}
+//   - background-color of before and after elements on hover
+//
+//   .theme-font-{color}
+//   - color
+//
+//   .theme-font-hover-{color}
+//   - color on hover
+//
+//
+//   .theme-border-{color}
+//   - border-color
+//
+//   .theme-border-hover-{color}
+//   - border-color on hover
+//
+//   .theme-ba-{color}
+//   - border-color of before and after elements
+//
+//   .theme-ba-hover-{color}
+//   - border-color of before and after elements on hover
+//
+//
+//   .theme-svg-fill-{color}
+//   - svg fill
+//
+//   .theme-svg-fill-hover-{color}
+//   - svg fill on hover
+//
+//   .theme-svg-stroke-{color}
+//   - svg stroke
+//
+//   .theme-svg-stroke-hover-{color}
+//   - svg stroke on hover
+//
+//
+//   .btn-{color}
+//   - buttons - which add on hover darken 10%
+
+// For each theme,loop through all the colors within that theme and create
+//   the classes that will be used to access each of those colors.
+@each $name, $color in $theme {
+
+  // Background Color
+  .theme-background-#{$name} { background-color: #{$color}; }
+  // Background Color on hover
+  .theme-background-hover-#{$name} { &:hover { background-color: #{$color}; } }
+  // Background Color on hover, darkened by 10%
+  .theme-background-hover-darken-#{$name} { &:hover { background-color: darken($color, 10%); } }
+
+  // Background Color of the :BEFORE and :AFTER elements
+  .theme-background-ba-#{$name} { &:before, &:after { background-color: #{$color}; } }
+  // Background Color of the :BEFORE and :AFTER elements on hover
+  .theme-background-ba-hover-#{$name} { &:hover { &:before, &:after { background-color: #{$color}; } } }
+
+  // Color - for fonts
+  .theme-font-#{$name} { color: #{$color} }
+  // Color on hover
+  .theme-font-hover-#{$name} { &:hover { color: #{$color} } }
+
+  // Border Colors
+  .theme-border-#{$name} { border-color: #{$color}; }
+  // Border Colors on hover
+  .theme-border-hover-#{$name} { &:hover { border-color: #{$color} } }
+
+  // Border Colors of :BEFORE and :AFTER
+  .theme-border-ba-#{$name} { &:before, &:after { border-color: #{$color}; } }
+  // Border Colors of :BEFORE and :AFTER on hover
+  .theme-border-ba-hover-#{$name} { &:hover { &:before, &:after { border-color: #{$color}; } } }
+
+  // SVG fill and stroke colors
+  // Fill color for a single SVG <path> or other element with a fill
+  .theme-svg-fill-#{$name}      { fill: #{$color};  }
+  // Fill color for a single SVG <path> or other element with a fill on hover
+  .theme-svg-fill-hover#{$name} { &:hover { fill: #{$color};  } }
+
+  // Fill color for a <svg> element that will change the fill color of all
+  //   child paths and other elements with a fill
+  .theme-svg-fill-all-#{$name} .fill       { fill: #{$color};  }
+  // Same as above but change fill colors on hover
+  .theme-svg-fill-all-hover-#{$name} .fill { &:hover { fill: #{$color};  } }
+
+  // Stroke color for a single SVG <path> or other element with a stroke
+  .theme-svg-stroke-#{$name}      { stroke: #{$color};  }
+  // Stroke color for a single SVG <path> or other element with a stroke on hover
+  .theme-svg-stroke-hover#{$name} { &:hover { stroke: #{$color};  } }
+
+  // Stroke color for a <svg> element that will change the stroke color of
+  //   all child paths and other elements with a stroke
+  .theme-svg-stroke-all-#{$name} .stroke       { stroke: #{$color};  }
+  // Save as above but change stroke colors on hover
+  .theme-svg-stroke-all-hover-#{$name} .stroke { &:hover { stroke: #{$color};  } }
+
+  // Button colors for backgrounds and fonts and hover
+  .btn {
+    .btn-#{$name} {
+      background-color: #{$color};
+
+      &:hover {
+        background-color: scale-color($color, $lightness: -15%);
+      }
+    }
+  }
+}
+
+// Global Base Font Color
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li,
+[type='text'],
+[type='password'],
+[type='date'],
+[type='datetime'],
+[type='datetime-local'],
+[type='month'],
+[type='week'],
+[type='email'],
+[type='number'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='url'],
+[type='color'],
+textarea {
+  color: map-get($theme, font);
+}

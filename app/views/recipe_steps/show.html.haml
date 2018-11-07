@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Recipe:
+  = @recipe_step.recipe
+%p
+  %b Stepable:
+  = @recipe_step.stepable
+%p
+  %b Position:
+  = @recipe_step.position
+
+= link_to 'Edit', edit_recipe_step_path(@recipe_step)
+\|
+= link_to 'Back', recipe_steps_path

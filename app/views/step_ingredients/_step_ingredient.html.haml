@@ -1,0 +1,5 @@
+.ingredient
+  %h4= step_ingredient.ingredient.name
+  %ul.measurments
+    - step_ingredient.measurements.each do |m|
+      %li.measurement= m.to_unit

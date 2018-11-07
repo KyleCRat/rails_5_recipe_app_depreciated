@@ -1,0 +1,11 @@
+// Site theme
+//
+// A Theme can take any number of variables use the default ones or adjust them
+//   to suit your needs.
+
+$theme: (
+  font:   $font,
+  dark:   $dark,
+  medium: $medium,
+  light:  $light
+);

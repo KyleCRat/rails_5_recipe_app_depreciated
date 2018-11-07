@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @technique.name
+%p
+  %b Title:
+  = @technique.title
+%p
+  %b Description:
+  = @technique.description
+
+= link_to 'Edit', edit_technique_path(@technique)
+\|
+= link_to 'Back', techniques_path

@@ -1,0 +1,25 @@
+%h1 Listing techniques
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Title
+      %th Description
+      %th
+      %th
+      %th
+
+  %tbody
+    - @techniques.each do |technique|
+      %tr
+        %td= technique.name
+        %td= technique.title
+        %td= technique.description
+        %td= link_to 'Show', technique
+        %td= link_to 'Edit', edit_technique_path(technique)
+        %td= link_to 'Destroy', technique, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Technique', new_technique_path

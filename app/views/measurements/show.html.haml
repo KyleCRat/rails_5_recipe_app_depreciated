@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Step ingredient:
+  = @measurement.step_ingredient
+%p
+  %b Unit:
+  = @measurement.unit
+%p
+  %b Scalar:
+  = @measurement.scalar
+%p
+  %b Purpose:
+  = @measurement.purpose
+
+= link_to 'Edit', edit_measurement_path(@measurement)
+\|
+= link_to 'Back', measurements_path
