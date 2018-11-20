@@ -62,6 +62,9 @@ gem 'enumerations'
 # Single Service Objects
 gem 'interactor'
 
+# Decorators
+gem 'draper'
+
 ##########################################
 # Javascript
 ##########################################

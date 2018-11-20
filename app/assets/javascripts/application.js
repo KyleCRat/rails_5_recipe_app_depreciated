@@ -81,12 +81,14 @@ function initialize() {
         Site.session.startTime = Date.now();
         Site.isLoading = false;
         Site.scrollCheck();
+        Site.nav();
     }
 
     fireJsInitialized();
 
     $(function(){ $(document).foundation(); });
 
+    Site.closeMenu();
     Site.videoListeners();
     Site.scrollFunctions();
     Site.pageSpecificJS();

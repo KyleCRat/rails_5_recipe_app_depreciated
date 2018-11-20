@@ -2,9 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.ingredients {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-
+.recipe-card {
+  position: relative;
+  padding: 8px;
+  margin: 8px 0;
+  background-color: $off-white;
+  box-shadow: 0 0 10px rgba($black, .5);
 }

@@ -1,10 +1,17 @@
-%h1= recipe.title
+%article.recipe
+  %h1= recipe.title
 
-%p= recipe.description
+  %p= recipe.description
 
-.steps
-  - recipe.recipe_components.each do |step|
-    %section.step
-      %h3.step-title= "Step #{step.recipe_steps.find_by(recipe: recipe).position}"
-      .ingredients
-        = render step
+  .ingredients
+    - recipe.step_ingredients.each do |step_ingredient|
+      = render step_ingredient
+
+  .steps
+    - recipe.recipe_steps.each do |recipe_step|
+      %section.recipe-step
+        %h3.step-title="Step #{recipe_step.position}"
+        - if recipe_step.stepable.class == Recipe
+          = render 'sub_recipe', recipe: recipe_step.stepable
+        - else
+          = render recipe_step.stepable

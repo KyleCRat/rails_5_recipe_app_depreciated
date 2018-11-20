@@ -11,12 +11,12 @@
 #  updated_at    :datetime         not null
 #
 
-
 # StepIngredient is the through record for Steps to Ingredients. This also
 #   relates measurements to the ingredient on the step.
 class StepIngredient < ApplicationRecord
   belongs_to :step
   belongs_to :ingredient
+  belongs_to :technique, required: false
 
   has_many   :measurements
 end

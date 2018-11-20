@@ -5,6 +5,7 @@ class CreateStepIngredients < ActiveRecord::Migration[5.2]
     create_table :step_ingredients do |t|
       t.references :step, foreign_key: true
       t.references :ingredient, foreign_key: true
+      t.references :technique, foreign_key: true
 
       t.timestamps
     end

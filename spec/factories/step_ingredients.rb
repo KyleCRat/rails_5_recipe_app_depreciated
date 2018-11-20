@@ -13,8 +13,8 @@
 
 FactoryBot.define do
   factory :step_ingredient do
-    # step { nil }
     ingredient { create(:ingredient) }
+    technique { create(:technique) }
 
     transient do
       measurements_count { Faker::Number.between(1, 3) }

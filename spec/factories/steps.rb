@@ -4,13 +4,18 @@
 #
 # Table name: steps
 #
-#  id         :bigint(8)        not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :bigint(8)        not null, primary key
+#  title       :string
+#  description :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 FactoryBot.define do
   factory :step do
+    title { Faker::Food.dish }
+    description { Faker::Food.description }
+
     transient do
       ingredients_count { Faker::Number.between(1, 3) }
     end
