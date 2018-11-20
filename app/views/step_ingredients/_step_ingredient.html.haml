@@ -1,5 +1,12 @@
 .ingredient
-  %h4= step_ingredient.ingredient.name
-  %ul.measurments
-    - step_ingredient.measurements.each do |m|
-      %li.measurement= m.to_unit
+  .checkbox
+    CH
+  .title
+    = step_ingredient.ingredient.title
+  .technique
+    = step_ingredient.technique.title
+  .measurements
+    - if step_ingredient.measurements.many?
+      %span.split-notice split into:
+    - step_ingredient.measurements.each_with_index do |measurement, index|
+      .measurement= measurement.to_unit

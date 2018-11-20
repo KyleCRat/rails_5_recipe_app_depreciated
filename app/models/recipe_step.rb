@@ -13,7 +13,6 @@
 #  updated_at    :datetime         not null
 #
 
-
 # RecipeStep is the through table for relating polymorphic stepable items to
 #   the recipe.
 class RecipeStep < ApplicationRecord
@@ -21,6 +20,8 @@ class RecipeStep < ApplicationRecord
   belongs_to :recipe
 
   before_create :set_position
+
+  default_scope -> { order(position: :asc) }
 
   private
 

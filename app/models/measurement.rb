@@ -13,7 +13,6 @@
 #  updated_at         :datetime         not null
 #
 
-
 # Measurement is a Unit and Sacalar that associates with a ingredient to display
 #   how much of something is necessary.
 class Measurement < ApplicationRecord

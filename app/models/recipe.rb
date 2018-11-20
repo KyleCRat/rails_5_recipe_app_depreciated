@@ -12,17 +12,17 @@
 #  updated_at  :datetime         not null
 #
 
-
 # Recipe's are containers that can have as many Steps, Techniques, or even
 #   other Recipes within them.
 class Recipe < ApplicationRecord
   include Stepable
 
-  has_many :recipe_steps
+  has_many :recipe_steps, dependent: :destroy
   has_many :steps,
            through: :recipe_steps,
            source: 'stepable',
-           source_type: 'Step'
+           source_type: 'Step',
+           dependent: :destroy
   has_many :techniques,
            through: :recipe_steps,
            source: 'stepable',
@@ -31,8 +31,8 @@ class Recipe < ApplicationRecord
            through: :recipe_steps,
            source: 'stepable',
            source_type: 'Recipe'
-
-  def recipe_components
-    recipe_steps.order(position: :asc).map(&:stepable)
-  end
+  has_many :ingredients,
+           through: :steps
+  has_many :step_ingredients,
+           through: :steps
 end

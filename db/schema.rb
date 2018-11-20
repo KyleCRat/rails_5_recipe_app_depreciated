@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_11_07_132535) do
   enable_extension "plpgsql"
 
   create_table "ingredients", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,19 +54,22 @@ ActiveRecord::Schema.define(version: 2018_11_07_132535) do
   create_table "step_ingredients", force: :cascade do |t|
     t.bigint "step_id"
     t.bigint "ingredient_id"
+    t.bigint "technique_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_step_ingredients_on_ingredient_id"
     t.index ["step_id"], name: "index_step_ingredients_on_step_id"
+    t.index ["technique_id"], name: "index_step_ingredients_on_technique_id"
   end
 
   create_table "steps", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "techniques", force: :cascade do |t|
-    t.string "name"
     t.string "title"
     t.string "description"
     t.datetime "created_at", null: false
@@ -105,4 +108,5 @@ ActiveRecord::Schema.define(version: 2018_11_07_132535) do
   add_foreign_key "recipe_steps", "recipes"
   add_foreign_key "step_ingredients", "ingredients"
   add_foreign_key "step_ingredients", "steps"
+  add_foreign_key "step_ingredients", "techniques"
 end
