@@ -4,14 +4,15 @@
   %p= recipe.description
 
   .ingredients
-    - recipe.step_ingredients.each do |step_ingredient|
-      = render step_ingredient
+    = render_combined_ingredients(recipe)
 
   .steps
     - recipe.recipe_steps.each do |recipe_step|
       %section.recipe-step
-        %h3.step-title="Step #{recipe_step.position}"
+        %small.step-title="Step #{recipe_step.position}"
+        %br
         - if recipe_step.stepable.class == Recipe
           = render 'sub_recipe', recipe: recipe_step.stepable
         - else
           = render recipe_step.stepable
+      %hr
