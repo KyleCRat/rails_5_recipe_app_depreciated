@@ -16,6 +16,7 @@
 
 //= require foundation
 //= require turbolinks
+//= require cocoon
 
 //= require jquery.slick
 //= require js.cookie

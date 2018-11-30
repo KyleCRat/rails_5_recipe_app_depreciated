@@ -20,6 +20,13 @@ class StepIngredient < ApplicationRecord
 
   has_many   :measurements
 
+  accepts_nested_attributes_for :measurements,
+                                reject_if: :all_blank,
+                                allow_destroy: true
+  accepts_nested_attributes_for :ingredient,
+                                reject_if: :all_blank,
+                                allow_destroy: true
+
   def total_measurement
     measurements.inject(0) do |v, m|
       v + m.to_unit
