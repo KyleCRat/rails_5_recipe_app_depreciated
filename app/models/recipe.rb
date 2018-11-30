@@ -35,4 +35,17 @@ class Recipe < ApplicationRecord
            through: :steps
   has_many :step_ingredients,
            through: :steps
+
+  accepts_nested_attributes_for :recipes,
+                                reject_if: :all_blank,
+                                allow_destroy: true
+  accepts_nested_attributes_for :techniques,
+                                reject_if: :all_blank,
+                                allow_destroy: true
+  accepts_nested_attributes_for :steps,
+                                reject_if: :all_blank,
+                                allow_destroy: true
+  accepts_nested_attributes_for :recipe_steps,
+                                reject_if: :all_blank,
+                                allow_destroy: true
 end

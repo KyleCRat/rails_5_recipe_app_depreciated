@@ -132,6 +132,9 @@ gem 'simple_form'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 
+# embeded form fields
+gem 'cocoon'
+
 # Pagination at the model level
 #gem 'kaminari'
 

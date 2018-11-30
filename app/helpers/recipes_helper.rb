@@ -9,6 +9,7 @@ module RecipesHelper
     ing_groups.sort.each do |_title, group|
       temp_s_ing = group.first.dup
       temp_s_ing.measurements = []
+      temp_s_ing.technique = nil if group.many?
 
       group.each do |ingredient|
         ingredient.measurements.each do |measurement|

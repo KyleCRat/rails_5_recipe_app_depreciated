@@ -1,4 +1,4 @@
-= form_for @recipe do |f|
+= simple_form_for @recipe, html: { class: 'recipe-form' } do |f|
   - if @recipe.errors.any?
     #error_explanation
       %h2= "#{pluralize(@recipe.errors.count, "error")} prohibited this recipe from being saved:"
@@ -6,14 +6,7 @@
         - @recipe.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :description
-    = f.text_area :description
+  = render 'fields', f: f
+
   .actions
     = f.submit 'Save'
