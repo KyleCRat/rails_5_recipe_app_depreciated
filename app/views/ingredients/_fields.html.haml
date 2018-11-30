@@ -1,0 +1,8 @@
+.ingredient-fields.fields
+  = link_to_remove_association('Select Existing Ingredient', f,
+                               { wrapper_class: 'ingredient-fields' })
+
+  .field
+    = f.input :title
+  .field
+    = f.input :description

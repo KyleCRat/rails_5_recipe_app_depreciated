@@ -1,0 +1,19 @@
+.recipe-fields.fields
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :description
+    = f.text_area :description
+
+  %hr
+
+  = f.simple_fields_for :recipe_steps do |recipe_step|
+    = recipe_step.object.inspect
+
+  .step-association
+    = f.simple_fields_for :steps do |step|
+      = render 'steps/fields', f: step
+    .links
+      = link_to_add_association 'Add Step', f, :steps,
+                                partial: 'steps/fields'

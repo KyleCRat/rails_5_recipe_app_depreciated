@@ -19,4 +19,8 @@ class Step < ApplicationRecord
   has_many :step_ingredients
   has_many :measurements, through: :step_ingredients
   has_many :ingredients, through: :step_ingredients
+
+  accepts_nested_attributes_for :step_ingredients,
+                                reject_if: :all_blank,
+                                allow_destroy: true
 end
