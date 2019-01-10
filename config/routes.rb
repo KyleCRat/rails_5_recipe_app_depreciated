@@ -1,24 +1,22 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  # Specific Pages
+  root 'recipes#index'
+
   resources :measurements
   resources :ingredients
   resources :techniques
   resources :recipe_steps
   resources :recipes
+
   # Authentication via Divise routes
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  # Specific Pages
-  root 'pages#home'
 
   get 'contact',
       to: 'pages#contact',
       as: :contact
-
-  get 'sitemap',
-      to: 'pages#site_map',
-      as: :site_map
 
   # Resources
   resources :ajax_modal

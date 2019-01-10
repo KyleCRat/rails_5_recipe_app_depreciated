@@ -1,15 +1,20 @@
 .step-ingredient-fields.fields
   .ingredient-association
-    .add-ingredient
-      = link_to_add_association 'Add New Ingredient', f, :ingredient,
-                                partial: 'ingredients/fields'
-    .new-ingredient
-      -# TODO: Update to type to search field
-      = f.association :ingredient,
-                      collection: Ingredient.all,
-                      selected: f.object.id,
-                      prompt: 'Choose an ingredient',
-                      wrapper_html: { class: 'select-ingredient' }
+    .ingredient-select-fields.fields
+      .select-ingredient
+        -# TODO: Update to type to search field
+        = f.association :ingredient,
+                        collection: Ingredient.all,
+                        selected: f.object.id,
+                        prompt: 'Choose an ingredient',
+                        wrapper_html: { class: 'select-ingredient' }
+      %span or
+      .add-ingredient
+        = link_to_add_association 'Add New Ingredient', f, :ingredient,
+                                  partial: 'ingredients/fields',
+                                  data: { 'association-insertion-traversal' => 'closest',
+                                          'association-insertion-node' => '.ingredient-association',
+                                          'association-insertion-method' => :prepend }
 
   .measurement-association
     = f.simple_fields_for :measurements do |measurement|
