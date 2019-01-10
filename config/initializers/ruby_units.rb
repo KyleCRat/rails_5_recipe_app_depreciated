@@ -5,3 +5,45 @@ end
 Unit.redefine!('tablespoon') do |tablespoon|
   tablespoon.display_name = 'Tbsp'
 end
+
+Unit.redefine!('teaspoon') do |teaspoon|
+  teaspoon.display_name = 'tsp'
+end
+
+Unit.redefine!('fluid-ounce') do |floz|
+  floz.display_name = 'fl oz'
+end
+
+
+class Unit
+  def self.measurements
+    {
+      cup: 'Cup',
+      floz: 'Fluid Ounce',
+      tbsp: 'Tablespoon'
+    }
+  end
+
+  def pluralize
+    separator = RubyUnits.configuration.separator
+
+    case self.units
+    when 'fl oz'
+      "#{self.scalar.to_f}#{separator}#{self.units.to_s.pluralize(self.scalar)}"
+    else
+      case self.scalar
+      when Complex
+        "#{self.scalar}#{separator}#{self.units.to_s.pluralize(self.scalar)}"
+      when Rational
+        unit = "#{(self.scalar - (self.scalar % 1)).to_i} #{self.scalar % 1}"
+        "#{unit}#{separator}#{self.units.to_s.pluralize(self.scalar)}"
+      else
+        "#{self.scalar}#{separator}#{self.units.to_s.pluralize(self.scalar)}"
+      end
+    end
+  end
+
+  def pluralize_as(unit)
+    self.convert_to(unit).pluralize
+  end
+end
