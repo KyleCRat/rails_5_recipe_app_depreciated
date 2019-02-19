@@ -1,4 +1,5 @@
 .step-fields.fields
+  %h3= "Step"
   = f.input :title
   = f.input :description
 
@@ -8,5 +9,3 @@
     .add-step-ingredient
       = link_to_add_association 'Add Ingredient', f, :step_ingredients,
                                 partial: 'step_ingredients/fields'
-
-  %hr
