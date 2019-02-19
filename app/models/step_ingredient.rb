@@ -28,8 +28,10 @@ class StepIngredient < ApplicationRecord
                                 allow_destroy: true
 
   def total_measurement
-    measurements.inject(0) do |v, m|
+    value = measurements.inject(0) do |v, m|
       v + m.to_unit
     end
+
+    value.pluralize
   end
 end
