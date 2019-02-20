@@ -16,7 +16,7 @@
 FactoryBot.define do
   factory :measurement do
     step_ingredient { nil }
-    unit { Faker::Food.metric_measurement }
+    unit { Unit.measurements.map { |k, _| k }.sample }
     scalar { Faker::Number.decimal(1, 1) }
     purpose { Faker::Lorem.sentence }
   end
