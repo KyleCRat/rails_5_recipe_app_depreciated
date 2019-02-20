@@ -76,15 +76,23 @@ class RecipesController < ApplicationController
               :name,
               :title,
               :description,
+              recipe_steps_attributes: [
+                :id,
+                :position,
+                :stepable_type,
+                :stepable_id,
+                :recipe_id,
+                :_destroy
+              ],
               recipes_attributes: [
                 :id,
-                :_destroy,
+                :_destroy
               ],
               techniques_attributes: [
                 :id,
                 :title,
                 :description,
-                :_destroy,
+                :_destroy
               ],
               steps_attributes: [
                 :id,
@@ -100,21 +108,16 @@ class RecipesController < ApplicationController
                     :unit,
                     :scalar,
                     :purpose,
-                    :_destroy,
+                    :_destroy
                   ],
                   ingredient_attributes: [
                     :id,
                     :title,
                     :description,
-                    :_destroy,
+                    :_destroy
                   ]
-                ],
-              ],
-              recipe_steps_attributes: [
-                :id,
-                :title,
-                :description,
-                :_destroy,
-              ])
+                ]
+              ]
+            )
     end
 end

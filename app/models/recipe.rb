@@ -16,34 +16,36 @@ class Recipe < ApplicationRecord
   include Stepable
 
   has_many :recipe_steps, dependent: :destroy
+
   has_many :steps,
            through: :recipe_steps,
            source: 'stepable',
            source_type: 'Step',
            dependent: :destroy
+
   has_many :techniques,
            through: :recipe_steps,
            source: 'stepable',
-           source_type: 'Technique'
+           source_type: 'Technique',
+           dependent: :destroy
+
   has_many :recipes,
            through: :recipe_steps,
            source: 'stepable',
-           source_type: 'Recipe'
+           source_type: 'Recipe',
+           dependent: :destroy
+
   has_many :ingredients,
            through: :steps
+
   has_many :step_ingredients,
-           through: :steps
+           through: :steps,
+           dependent: :destroy
 
   accepts_nested_attributes_for :recipes,
-                                reject_if: :all_blank,
-                                allow_destroy: true
-  accepts_nested_attributes_for :techniques,
-                                reject_if: :all_blank,
-                                allow_destroy: true
-  accepts_nested_attributes_for :steps,
-                                reject_if: :all_blank,
-                                allow_destroy: true
-  accepts_nested_attributes_for :recipe_steps,
+                                :techniques,
+                                :steps,
+                                :recipe_steps,
                                 reject_if: :all_blank,
                                 allow_destroy: true
 end

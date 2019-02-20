@@ -18,12 +18,10 @@ class StepIngredient < ApplicationRecord
   belongs_to :ingredient
   belongs_to :technique, required: false
 
-  has_many   :measurements
+  has_many   :measurements, dependent: :destroy
 
   accepts_nested_attributes_for :measurements,
-                                reject_if: :all_blank,
-                                allow_destroy: true
-  accepts_nested_attributes_for :ingredient,
+                                :ingredient,
                                 reject_if: :all_blank,
                                 allow_destroy: true
 
