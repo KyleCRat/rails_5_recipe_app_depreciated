@@ -1,0 +1,12 @@
+.recipe-step-fields
+  %h3= "#{f.object.position} #{f.object.stepable&.title}"
+  = f.input :position, as: :hidden
+
+
+  - if f.object.stepable.present?
+    = f.simple_fields_for :stepable do |step|
+      = render_recipe_step_ajax_edit_field(step.object)
+
+  = link_to_remove_association('Remove Step', f,
+                               { wrapper_class: 'recipe-step-fields' })
+  %hr
