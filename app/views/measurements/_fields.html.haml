@@ -2,7 +2,8 @@
   %h5 Measurement
   = f.input :unit,
             as: :select,
-            collection: Unit.measurements.map{|k,v| [v,k]}
+            collection: Unit.measurements.map { |k,v| [v,k] }
+
   = f.input :scalar
 
   = link_to_remove_association('Remove Measurement', f,
