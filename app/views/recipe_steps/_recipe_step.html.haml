@@ -1,2 +1,12 @@
-.recipe_step{data: {position: recipe_step.position}}
-  = "#{recipe_step.stepable_type} #{recipe_step.position}"
+%li.recipe-step{'data-id' => recipe_step.id}
+  .dragger
+    -# - if recipe_step.stepable.class == Recipe
+    -#   = render 'sub_recipe', recipe: recipe_step.stepable
+    -# - if recipe_step.stepable.nil?
+    -#   Nil Recipe Step, something went wrong
+    -# - else
+    -#   = render recipe_step.stepable
+
+  - if recipe_step.stepable.present?
+    .edit-step-button
+      = render_recipe_step_ajax_edit_field(recipe_step.stepable)

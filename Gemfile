@@ -39,7 +39,7 @@ gem 'annotate', group: :development
 ##########################################
 
 # Use Sass, SCSS for stylesheets
-gem 'sass-rails'
+gem 'sassc-rails'
 
 # foundation for rails
 gem 'foundation-rails'
@@ -138,6 +138,9 @@ gem 'cocoon'
 # Pagination at the model level
 #gem 'kaminari'
 
+# Remote form submission
+gem 'remotipart'
+
 ##########################################
 # Webserver and server info
 ##########################################
@@ -201,7 +204,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

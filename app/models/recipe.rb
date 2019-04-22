@@ -48,4 +48,14 @@ class Recipe < ApplicationRecord
                                 :recipe_steps,
                                 reject_if: :all_blank,
                                 allow_destroy: true
+
+  def all_ingredients
+    ingredients = step_ingredients.to_ary
+
+    recipes.each do |recipe|
+      ingredients += recipe.all_ingredients
+    end
+
+    ingredients
+  end
 end

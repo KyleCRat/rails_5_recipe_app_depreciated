@@ -43,9 +43,11 @@ class StepsController < ApplicationController
     respond_to do |format|
       if @step.update(step_params)
         format.html { redirect_to @step, notice: 'Recipe step was successfully updated.' }
+        format.js   { render :show }
         format.json { render :show, status: :ok, location: @step }
       else
         format.html { render :edit }
+        format.js   { render :edit }
         format.json { render json: @step.errors, status: :unprocessable_entity }
       end
     end

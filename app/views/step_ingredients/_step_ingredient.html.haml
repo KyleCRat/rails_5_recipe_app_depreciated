@@ -1,6 +1,7 @@
 .ingredient
-  .checkbox
-    CH
+  - if defined?(f)
+    .checkbox
+      = f.input step_ingredient.ingredient_id, as: :boolean, label: false
   .title
     = step_ingredient.ingredient.title
   .technique

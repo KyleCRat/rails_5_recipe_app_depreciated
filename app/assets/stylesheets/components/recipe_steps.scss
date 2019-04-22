@@ -1,3 +1,45 @@
 // Place all the styles related to the recipe_steps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#recipes-edit {
+  .recipe-step {
+    position: relative;
+    padding: 16px 16px 16px 54px;
+    margin-bottom: 16px;
+    border: 1px solid $light;
+    border-radius: 8px;
+
+    .dragger {
+      position: absolute;
+      top: 50%;
+      left: 4px;
+      display: block;
+      width: 38px;
+      height: 38px;
+      overflow: hidden;
+      cursor: grab;
+      background: repeating-linear-gradient(0, transparent, transparent 2px, $black 2px, $black 3px);
+      border-radius: 8px;
+      content: '';
+      opacity: .3;
+      transform: translateY(-50%);
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+  }
+}
+
+.sortable-placeholder {
+  display: block;
+  border: 1px dashed #CCC;
+  background-color: #f9f9f9;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.sortable {
+  // display: list-item;
+}

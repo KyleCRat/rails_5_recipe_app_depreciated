@@ -23,4 +23,8 @@ class Step < ApplicationRecord
   accepts_nested_attributes_for :step_ingredients,
                                 reject_if: :all_blank,
                                 allow_destroy: true
+
+  def position(recipe)
+    recipe_steps.find_by(recipe: recipe)&.position
+  end
 end

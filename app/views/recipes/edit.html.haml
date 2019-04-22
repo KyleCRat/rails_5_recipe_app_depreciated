@@ -1,7 +1,12 @@
-%h1 Editing recipe
+%h1= "Editing #{@recipe.title}"
 
 = render 'form'
 
+%hr
+
+= render 'recipe_steps/edit', recipe: @recipe
+
+%br
 = link_to 'Show', @recipe
 \|
 = link_to 'Back', recipes_path

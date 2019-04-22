@@ -35,6 +35,7 @@ class Unit
       when Complex
         "#{self.scalar}#{separator}#{self.units.to_s.pluralize(self.scalar)}"
       when Rational
+        # Why moduloing by 1?
         unit = "#{(self.scalar - (self.scalar % 1)).to_i} #{self.scalar % 1}"
         "#{unit}#{separator}#{self.units.to_s.pluralize(self.scalar)}"
       else

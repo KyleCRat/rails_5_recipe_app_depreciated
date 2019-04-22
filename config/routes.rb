@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   resources :measurements
   resources :ingredients
   resources :techniques
-  resources :recipe_steps
   resources :recipes
+  resources :recipe_steps do
+    put :sort, on: :collection
+  end
+  resources :steps
 
   # Authentication via Divise routes
   devise_for :users, controllers: { registrations: 'registrations' }
-
 
   get 'contact',
       to: 'pages#contact',

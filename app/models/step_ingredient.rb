@@ -30,6 +30,7 @@ class StepIngredient < ApplicationRecord
       v + m.to_unit
     end
 
-    value.pluralize
+    value.convert_to(value.base) unless measurements.collect(&:to_unit).collect(&:units).uniq.one?
+    value
   end
 end

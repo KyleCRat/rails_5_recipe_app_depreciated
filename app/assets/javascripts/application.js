@@ -11,8 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ui
 //= require jquery_ujs
+//= require jquery-ui
+//= require jquery.remotipart
 
 //= require foundation
 //= require turbolinks
@@ -94,6 +95,8 @@ function initialize() {
     Site.scrollFunctions();
     Site.pageSpecificJS();
     Site.pageSlickSliders();
+    Site.flash();
+    Site.killFlashOnClick();
 }
 
 function fireJsInitialized() {

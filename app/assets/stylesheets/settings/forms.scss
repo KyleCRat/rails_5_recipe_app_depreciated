@@ -16,3 +16,11 @@
     }
   }
 }
+
+.inline-fields {
+  input,
+  text,
+  select {
+    margin: 0;
+  }
+}

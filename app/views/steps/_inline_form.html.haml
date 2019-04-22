@@ -1,0 +1,5 @@
+= simple_form_for step, remote: true do |f|
+  = render 'steps/fields', f: f
+
+  .actions
+    = f.submit 'Save'

@@ -1,3 +1,25 @@
-// Place all the styles related to the measurements controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.measurement-fields {
+  display: flex;
+  flex-direction: row;
+}
+
+.combined-measurement-field {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+
+  div {
+  }
+}
+
+.measurement-unit {
+  width: 50%;
+}
+
+.measurement-scalar {
+  width: 50%;
+}

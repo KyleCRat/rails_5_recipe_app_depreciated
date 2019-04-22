@@ -63,6 +63,15 @@ class RecipeStepsController < ApplicationController
     end
   end
 
+  # PUT /recipe_steps/sort
+  def sort
+    params[:recipe_steps].each do |_k, v|
+      RecipeStep.find(v[:id]).update_attribute(:position, v[:position])
+    end
+
+    head :ok
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe_step

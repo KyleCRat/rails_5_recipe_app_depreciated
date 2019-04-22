@@ -5,7 +5,8 @@
 
   - if f.object.stepable.present?
     = f.simple_fields_for :stepable do |step|
-      = render_recipe_step_ajax_edit_field(step.object)
+      = render 'steps/inline_form', step: step.object
+      -# = render_recipe_step_ajax_edit_field(step.object)
 
   = link_to_remove_association('Remove Step', f,
                                { wrapper_class: 'recipe-step-fields' })

@@ -1,18 +1,21 @@
 %article.recipe
-  %h1= recipe.title
-
-  %p= recipe.description
+  .info
+    %h1= recipe.title
+    %p= recipe.description
 
   .ingredients
-    = render_combined_ingredients(recipe)
+    = simple_form_for :shopping_list, url: '/shopping_list/update' do |f|
+      = render_combined_ingredients(recipe, f)
 
   .steps
     - recipe.recipe_steps.each do |recipe_step|
       %section.recipe-step
-        %small.step-title="Step #{recipe_step.position}"
-        %br
+        %h4.step-title="Step #{recipe_step.position}"
+
         - if recipe_step.stepable.class == Recipe
           = render 'sub_recipe', recipe: recipe_step.stepable
+        - if recipe_step.stepable.nil?
+          Nil Recipe Step, something went wrong
         - else
           = render recipe_step.stepable
       %hr
