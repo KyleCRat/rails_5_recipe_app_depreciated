@@ -6,19 +6,10 @@
 
   -# TODO: Update this to allow for one of the four options below
 
-  -# .stepable-recipe-fields
-  -#   = f.input :stepable_id, as: :select, collection: Recipe.all, label: 'Select Recipe'
-  -#   = f.input :stepable_type, as: :hidden, input_html: { value: 'Recipe' }
-  -#
-  -# .stepable-step-fields
-  -#   = f.input :stepable_id, as: :select, collection: Technique.all, label: 'Select Technique'
-  -#   = f.input :stepable_type, as: :hidden, input_html: { value: 'Technique' }
-  -#
-  -# .stepable-step-fields
-  -#   = f.input :stepable_id, as: :select, collection: Step.all, label: 'Select Step'
-  -#   = f.input :stepable_type, as: :hidden, input_html: { value: 'Step' }
+  = link_to('Select Recipe', 'javascript:void(0);', class: 'stepable-select', 'data-type' => CGI.escapeHTML(render('recipe_steps/stepable_types/select_recipe', f: f).to_str).html_safe)
+  = link_to('Select Technique', 'javascript:void(0);', class: 'stepable-select', 'data-type' => CGI.escapeHTML(render('recipe_steps/stepable_types/select_technique', f: f).to_str).html_safe)
+  = link_to('Select Step', 'javascript:void(0);', class: 'stepable-select', 'data-type' => CGI.escapeHTML(render('recipe_steps/stepable_types/select_step', f: f).to_str).html_safe)
+  = link_to('Build Step', 'javascript:void(0);', class: 'stepable-select', 'data-type' => CGI.escapeHTML(render('recipe_steps/stepable_types/build_step', f: f).to_str).html_safe)
 
-  .stepable-step-fields
-    = f.simple_fields_for :stepable, Step.new() do |step|
-      = f.input :stepable_type, as: :hidden, input_html: { value: 'Step' }
-      = render 'steps/fields', f: step
+  .stepable-select-fields
+    = render 'recipe_steps/stepable_types/select_recipe', f: f

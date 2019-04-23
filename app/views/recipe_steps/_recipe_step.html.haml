@@ -6,6 +6,10 @@
       %h4= recipe_step.stepable.title
 
       %p= recipe_step.stepable.description
+  - elsif recipe_step.stepable.class == Technique
+    %h4= recipe_step.stepable.title
+
+    %p= recipe_step.stepable.description
   - if recipe_step.stepable.nil?
     = render 'inline_form', recipe_step: recipe_step
 
@@ -14,3 +18,9 @@
       = render_recipe_step_ajax_edit_field(recipe_step.stepable)
     .remove-step-button
       = link_to 'Delete Step', recipe_step_path(recipe_step), method: :delete, remote: true
+
+:javascript
+    $(document).on('click', '.stepable-select', function(e) {
+        html = $(e.currentTarget).data('type');
+        $(e.currentTarget).siblings('.stepable-select-fields').html(html);
+    });
