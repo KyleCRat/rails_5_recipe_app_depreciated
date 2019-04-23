@@ -1,0 +1,6 @@
+= simple_form_for @recipe_step, remote: true do |f|
+
+  = render 'fields', f: f
+
+  .actions
+    = f.submit 'Save'

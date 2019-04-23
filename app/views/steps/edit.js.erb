@@ -1,4 +1,3 @@
 plain:
-console.log($('<%= "#recipe_step_edit_step_#{@step.id} .edit-step-button" %>'));
 $('<%= "#recipe_step_edit_step_#{@step.id}_btn" %>').hide();
 $('<%= "#recipe_step_edit_step_#{@step.id}" %>').html('<%= j render "steps/inline_form", step: @step %>');

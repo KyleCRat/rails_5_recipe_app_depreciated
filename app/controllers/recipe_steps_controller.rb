@@ -19,6 +19,13 @@ class RecipeStepsController < ApplicationController
     @recipe_step = RecipeStep.new
   end
 
+  # POST /recipe_steps/new
+  def build
+    @recipe = Recipe.find(params[:id])
+    @recipe_step = RecipeStep.new(recipe: @recipe)
+    @new_uuid = SecureRandom.uuid
+  end
+
   # GET /recipe_steps/1/edit
   def edit
   end
@@ -27,13 +34,16 @@ class RecipeStepsController < ApplicationController
   # POST /recipe_steps.json
   def create
     @recipe_step = RecipeStep.new(recipe_step_params)
+    @new_uuid = recipe_step_params[:new_uuid]
 
     respond_to do |format|
       if @recipe_step.save
         format.html { redirect_to @recipe_step, notice: 'Recipe step was successfully created.' }
+        format.js   { render :show }
         format.json { render :show, status: :created, location: @recipe_step }
       else
         format.html { render :new }
+        format.js   { render :new }
         format.json { render json: @recipe_step.errors, status: :unprocessable_entity }
       end
     end
@@ -45,9 +55,11 @@ class RecipeStepsController < ApplicationController
     respond_to do |format|
       if @recipe_step.update(recipe_step_params)
         format.html { redirect_to @recipe_step, notice: 'Recipe step was successfully updated.' }
-        format.json { render :show, status: :ok, location: @recipe_step }
+        format.json { render :show }
+        format.js { render :show, status: :ok, location: @recipe_step }
       else
         format.html { render :edit }
+        format.js   { render :edit }
         format.json { render json: @recipe_step.errors, status: :unprocessable_entity }
       end
     end
@@ -59,6 +71,7 @@ class RecipeStepsController < ApplicationController
     @recipe_step.destroy
     respond_to do |format|
       format.html { redirect_to recipe_steps_url, notice: 'Recipe step was successfully destroyed.' }
+      format.js   { render :delete }
       format.json { head :no_content }
     end
   end
@@ -84,7 +97,32 @@ class RecipeStepsController < ApplicationController
         :id,
         :recipe_id,
         :stepable_id,
-        :position
+        :stepable_type,
+        :position,
+        :new_uuid,
+        stepable_attributes: [
+          :id,
+          :title,
+          :description,
+          step_ingredients_attributes: [
+            :id,
+            :_destroy,
+            :ingredient_id,
+            measurements_attributes: [
+              :id,
+              :unit,
+              :scalar,
+              :purpose,
+              :_destroy
+            ],
+            ingredient_attributes: [
+              :id,
+              :title,
+              :description,
+              :_destroy
+            ]
+          ]
+        ]
       )
     end
 end

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :recipes
   resources :recipe_steps do
     put :sort, on: :collection
+    post :build, on: :member
   end
   resources :steps
 

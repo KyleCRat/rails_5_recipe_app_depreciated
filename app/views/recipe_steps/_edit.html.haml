@@ -3,7 +3,7 @@
   - recipe.recipe_steps.each do |recipe_step|
     = render recipe_step
 
-%a{href: new_recipe_step_path, method: :post, remote: :true} Add Step
+=link_to('Add Step', build_recipe_step_path(recipe.id), method: :post, remote: :true)
 
 :javascript
     $(document).on('js:initialized', function() {
@@ -12,8 +12,6 @@
         $('.order-recipe-steps').sortable({
             placeholder: "sortable-placeholder",
             start: function(e, ui) {
-                console.log(ui.placeholder);
-                ui.item
                 ui.placeholder.height(ui.item.outerHeight() + 4);
             },
             stop: function(e, ui) {
@@ -27,8 +25,8 @@
             set_positions();
 
             // populate the updated_order array with the new task positions
-            $('.order-recipe-steps .recipe-step').each(function(i){
-                updated_order.push({ id: $(this).data("id"), position: i+1 });
+            $('.order-recipe-steps .recipe-step').each( function(i) {
+                updated_order.push( { id: $(this).data("id"), position: i + 1 } );
             });
 
             // send the updated order via ajax
@@ -40,8 +38,8 @@
         });
     });
 
-    set_positions = function(){
-        $('.order-recipe-steps .recipe-step').each(function(i){
-            $(this).attr("data-pos",i+1);
+    set_positions = function() {
+        $('.order-recipe-steps .recipe-step').each( function(i) {
+            $(this).attr("data-pos", i + 1);
         });
     };

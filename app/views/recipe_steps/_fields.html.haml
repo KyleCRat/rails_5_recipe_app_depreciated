@@ -1,13 +1,24 @@
 .recipe-step-fields
-  %h3= "#{f.object.position} #{f.object.stepable&.title}"
-  = f.input :position, as: :hidden
+  = f.input :recipe_id, as: :hidden, input_html: { value: f.object.recipe.id }
+  - if @new_uuid
+    -# If this is a field for adding a new recipe_step, pass the unique UUID
+    = f.input :new_uuid, as: :hidden, input_html: { value: @new_uuid }
 
+  -# TODO: Update this to allow for one of the four options below
 
-  - if f.object.stepable.present?
-    = f.simple_fields_for :stepable do |step|
-      = render 'steps/inline_form', step: step.object
-      -# = render_recipe_step_ajax_edit_field(step.object)
+  -# .stepable-recipe-fields
+  -#   = f.input :stepable_id, as: :select, collection: Recipe.all, label: 'Select Recipe'
+  -#   = f.input :stepable_type, as: :hidden, input_html: { value: 'Recipe' }
+  -#
+  -# .stepable-step-fields
+  -#   = f.input :stepable_id, as: :select, collection: Technique.all, label: 'Select Technique'
+  -#   = f.input :stepable_type, as: :hidden, input_html: { value: 'Technique' }
+  -#
+  -# .stepable-step-fields
+  -#   = f.input :stepable_id, as: :select, collection: Step.all, label: 'Select Step'
+  -#   = f.input :stepable_type, as: :hidden, input_html: { value: 'Step' }
 
-  = link_to_remove_association('Remove Step', f,
-                               { wrapper_class: 'recipe-step-fields' })
-  %hr
+  .stepable-step-fields
+    = f.simple_fields_for :stepable, Step.new() do |step|
+      = f.input :stepable_type, as: :hidden, input_html: { value: 'Step' }
+      = render 'steps/fields', f: step

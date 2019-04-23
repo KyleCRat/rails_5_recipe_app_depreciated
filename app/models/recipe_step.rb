@@ -16,10 +16,12 @@
 # RecipeStep is the through table for relating polymorphic stepable items to
 #   the recipe.
 class RecipeStep < ApplicationRecord
-  belongs_to :stepable, polymorphic: true, required: false
+  belongs_to :stepable, polymorphic: true
   belongs_to :recipe
 
   before_create :set_position
+
+  attr_accessor :new_uuid
 
   accepts_nested_attributes_for :stepable,
                                 reject_if: :all_blank,
@@ -31,5 +33,9 @@ class RecipeStep < ApplicationRecord
 
   def set_position
     self.position = recipe.recipe_steps.count + 1
+  end
+
+  def build_stepable(params)
+    self.stepable = stepable_type.constantize.new(params)
   end
 end

@@ -1,4 +1,4 @@
-= simple_form_for step, remote: true do |f|
+= simple_form_for step || Step.new, remote: true do |f|
   = render 'steps/fields', f: f
 
   .actions

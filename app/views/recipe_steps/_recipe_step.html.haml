@@ -1,4 +1,4 @@
-%li.recipe-step{'data-id' => recipe_step.id}
+%li.recipe-step{'data-id' => recipe_step.id || @new_uuid}
   .dragger
   - if recipe_step.stepable.class == Recipe
     -# = render 'sub_recipe', recipe: recipe_step.stepable
@@ -7,10 +7,10 @@
 
       %p= recipe_step.stepable.description
   - if recipe_step.stepable.nil?
-    Nil Recipe Step, something went wrong
+    = render 'inline_form', recipe_step: recipe_step
 
   - if recipe_step.stepable.present?
     .edit-step-button
       = render_recipe_step_ajax_edit_field(recipe_step.stepable)
     .remove-step-button
-      = link_to('Delete Step', recipe_step_path(recipe_step), method: :delete)
+      = link_to 'Delete Step', recipe_step_path(recipe_step), method: :delete, remote: true

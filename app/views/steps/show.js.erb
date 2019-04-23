@@ -1,5 +1,5 @@
 plain:
 $('#flash-wrapper').html('<%= j render "components/flash", flash: {success: "Successfully Updated Step"} %>')
-// Site.flash();
+Site.flash();
 $('<%= "#recipe_step_edit_step_#{@step.id}_btn" %>').show();
 $('<%= "#recipe_step_edit_step_#{@step.id}" %>').html('<%= j render @step %>');
