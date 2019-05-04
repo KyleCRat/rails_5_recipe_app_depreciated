@@ -26,9 +26,10 @@ nav {
     &::before {
       // TODO: Change to a span to allow js manipulation
       position: absolute;
-      top: -17px;
+      top: -15px;
       left: 50%;
       font-weight: bold;
+      font-size: 12px;
       color: $medium;
       content: 'MENU';
       transform: translate(-50%);

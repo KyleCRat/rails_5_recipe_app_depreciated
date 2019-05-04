@@ -1,0 +1,20 @@
+.recipe {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'title ingredients'
+    'steps steps';
+
+  .info {
+    grid-area: title;
+  }
+
+  .ingredients {
+    grid-area: ingredients;
+  }
+
+  .steps {
+    grid-area: steps;
+  }
+}
