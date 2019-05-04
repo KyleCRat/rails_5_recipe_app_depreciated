@@ -29,13 +29,13 @@ class RecipeStep < ApplicationRecord
 
   default_scope -> { order(position: :asc) }
 
+  def build_stepable(params)
+    self.stepable = stepable_type.constantize.new(params)
+  end
+
   private
 
   def set_position
     self.position = recipe.recipe_steps.count + 1
-  end
-
-  def build_stepable(params)
-    self.stepable = stepable_type.constantize.new(params)
   end
 end
