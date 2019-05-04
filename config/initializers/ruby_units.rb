@@ -18,9 +18,13 @@ end
 class Unit
   def self.measurements
     {
+      # Volume
       cup: 'Cup',
       floz: 'Fluid Ounce',
-      tbsp: 'Tablespoon'
+      tbsp: 'Tablespoon',
+      tsp: 'Teaspoon',
+      # Weight
+      lb: "Pound"
     }
   end
 
