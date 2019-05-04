@@ -1,8 +1,4 @@
 .input {
-  .text {
-    padding-top: 24px;
-  }
-
   .error {
     position: relative;
 
@@ -14,6 +10,10 @@
         color: darken($warn, 75%);
       }
     }
+  }
+
+  textarea {
+    min-height: 200px;
   }
 }
 
