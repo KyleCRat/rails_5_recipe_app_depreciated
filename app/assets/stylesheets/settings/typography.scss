@@ -1,6 +1,6 @@
 // Import any fonts
 //   example google font import:
-//@import url(https://fonts.googleapis.com/css?family=Font+One|Font+Two:400,800,700,600,300,200,100,500,900);
+@import url('https://fonts.googleapis.com/css?family=Barlow:200,400,500|Roboto+Condensed:300,400');
 
 //   example font within / assets/fonts
 //@font-face {
@@ -14,6 +14,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Font Variables
 ////////////////////////////////////////////////////////////////////////////////
+$roboto: 'Roboto Condensed', sans-serif;
+$barlow: 'Barlow', sans-serif;
 //$example-font: 'Example Font', serif;
 //$example-second-font: 'Example Font Two', serif;
 
@@ -158,6 +160,7 @@
 html { font-size: 1em; }
 
 body {
+  font-family: $roboto;
   font-weight: 400;
   line-height: 1.45;
   color: $font;
@@ -184,6 +187,7 @@ h2,
 h3,
 h4 {
   margin: .414em 0;
+  font-family: $barlow;
   font-weight: inherit;
   line-height: 1.2;
 }
