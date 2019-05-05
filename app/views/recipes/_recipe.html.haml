@@ -4,8 +4,6 @@
     %p= recipe.description
 
   .ingredients
-    %h2 Recipe Ingredients
-
     = simple_form_for :shopping_list, url: '/shopping_list/update' do |f|
       = render_combined_ingredients(recipe, f)
       = f.button :submit, 'Add to Shopping List' # TODO: add link

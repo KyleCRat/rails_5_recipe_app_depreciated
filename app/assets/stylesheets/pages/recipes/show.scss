@@ -1,0 +1,35 @@
+.recipe {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'title'
+    'ingredients'
+    'steps';
+
+  @include breakpoint(large up) {
+    grid-template-areas:
+      'title ingredients'
+      'steps steps';
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include breakpoint(xlarge up) {
+    grid-template-areas:
+      'title ingredients'
+      'steps ingredients';
+    grid-template-columns: 1fr 416px;
+  }
+
+  .info {
+    grid-area: title;
+  }
+
+  .ingredients {
+    grid-area: ingredients;
+  }
+
+  .steps {
+    grid-area: steps;
+  }
+}

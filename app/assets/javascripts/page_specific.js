@@ -18,8 +18,8 @@ Site.pageSpecificJS = function() {
   //Page specfic javascript for all sub pages of the baseURL
   // Remove the leading '/'
   switch(baseURL) {
-    case 'page':
-      //Site.examplePageFunction();
+    case 'recipes':
+      Site.recipeEdit();
       break;
   }
 }

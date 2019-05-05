@@ -2,3 +2,21 @@
   // Put button Styles here
   transition: background-color .25s ease-out, color .25s ease-out;
 }
+
+.button {
+  display: block;
+  max-width: 280px;
+  padding: 8px 16px;
+  margin: 4px auto;
+  color: $white;
+  text-align: center;
+  background-color: $medium;
+  border-radius: 4px;
+
+  &:hover,
+  &:visited,
+  &:focus {
+    color: $white;
+    background-color: darken($medium, 5%);
+  }
+}

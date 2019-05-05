@@ -1,5 +1,5 @@
 %li.recipe-step{'data-id' => recipe_step.id || @new_uuid}
-  .dragger
+  .handle
   - if recipe_step.stepable.class == Recipe
     -# = render 'sub_recipe', recipe: recipe_step.stepable
     .sub-recipe
@@ -18,9 +18,3 @@
       = render_recipe_step_ajax_edit_field(recipe_step.stepable)
     .remove-step-button
       = link_to 'Delete Step', recipe_step_path(recipe_step), method: :delete, remote: true
-
-:javascript
-    $(document).on('click', '.stepable-select', function(e) {
-        html = $(e.currentTarget).data('type');
-        $(e.currentTarget).siblings('.stepable-select-fields').html(html);
-    });

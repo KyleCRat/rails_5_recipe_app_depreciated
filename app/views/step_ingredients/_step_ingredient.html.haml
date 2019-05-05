@@ -8,6 +8,7 @@
     = step_ingredient&.technique&.title
   .measurements
     - if step_ingredient.measurements.many?
-      %span.split-notice= "#{step_ingredient.total_measurement} split into:"
+      .total.measurement= step_ingredient.total_measurement.pluralize
+      .split-notice split into
     - step_ingredient.measurements.each_with_index do |measurement, index|
-      .measurement= measurement.to_unit
+      .measurement= measurement.to_unit.pluralize

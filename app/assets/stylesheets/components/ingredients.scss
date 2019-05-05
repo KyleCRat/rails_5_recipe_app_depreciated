@@ -1,14 +1,18 @@
 .ingredient {
   display: grid;
-  grid-template-columns: 48px auto 96px;
+  padding: 4px 8px 16px;
+  grid-template-columns: 48px 3fr 1fr;
   grid-template-rows: 24px 24px auto;
+  grid-template-areas:
+    'checkbox title measurements'
+    'checkbox technique measurements'
+    '. . measurements';
 
   .checkbox {
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-column: 1 / 2;
-    grid-row: 1 / 3;
+    grid-area: checkbox;
 
     input {
       position: absolute;
@@ -49,18 +53,20 @@
   }
 
   .title {
-    grid-column: 2 / 4;
-    grid-row: 1 / 2;
+    grid-area: title;
   }
 
   .technique {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
+    min-height: 24px;
+    grid-area: technique;
     font-size: 10px;
   }
 
   .measurements {
-    grid-column: 3 / 4;
-    grid-row: 2 / 4;
+    grid-area: measurements;
   }
+}
+
+.split-notice {
+  font-size: 10px;
 }
