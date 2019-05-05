@@ -24,31 +24,34 @@ class Unit
       tbsp: 'Tablespoon',
       tsp: 'Teaspoon',
       # Weight
-      lb: "Pound"
+      lb: 'Pound'
     }
   end
 
   def pluralize
     separator = RubyUnits.configuration.separator
 
-    case self.units
+    case units
     when 'fl oz'
-      "#{self.scalar.to_f}#{separator}#{self.units.to_s.pluralize(self.scalar)}"
+      "#{scalar.to_f} #{separator} #{units.to_s.pluralize(scalar)}"
     else
-      case self.scalar
-      when Complex
-        "#{self.scalar}#{separator}#{self.units.to_s.pluralize(self.scalar)}"
-      when Rational
-        # Why moduloing by 1?
-        unit = "#{(self.scalar - (self.scalar % 1)).to_i} #{self.scalar % 1}"
-        "#{unit}#{separator}#{self.units.to_s.pluralize(self.scalar)}"
-      else
-        "#{self.scalar}#{separator}#{self.units.to_s.pluralize(self.scalar)}"
-      end
+      unit = ''
+
+      # find the whole unit of the scalar
+      whole = (scalar - (scalar % 1)).to_i
+      # find the remainer of the scalar
+      p (scalar % 1)
+      remainder = (scalar % 1).to_f.to_d.to_r
+
+      # insert the whole and remainder if they exist
+      unit << whole.to_s unless whole.zero?
+      unit << " #{remainder}" unless remainder.zero?
+
+      "#{unit}#{separator}#{units.to_s.pluralize(scalar)}"
     end
   end
 
   def pluralize_as(unit)
-    self.convert_to(unit).pluralize
+    convert_to(unit).pluralize
   end
 end
