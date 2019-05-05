@@ -1,0 +1,23 @@
+.recipe-steps {
+}
+
+.recipe-step {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  min-height: 80px;
+}
+
+.step-position {
+  padding-right: 8px;
+  font-size: 60px;
+  line-height: 48px;
+  color: $light;
+
+  @include breakpoint(huge up) {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    z-index: -1;
+  }
+}

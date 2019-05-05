@@ -1,6 +1,7 @@
 %article.recipe
   .info
     %h1= recipe.title
+    = image_tag('https://placehold.it/1200x500')
     %p= recipe.description
 
   .ingredients
@@ -8,16 +9,17 @@
       = render_combined_ingredients(recipe, f)
       = f.button :submit, 'Add to Shopping List' # TODO: add link
       -# TODO: make ajax update on checkbox click
+      -# TODO: add a check all button
 
-  .steps
+  .recipe-steps
     - recipe.recipe_steps.each_with_index do |recipe_step, i|
       %section.recipe-step
-        %h3.step-title="Step #{i + 1}"
+        %h3.step-position= i + 1
 
         - if recipe_step.stepable.class == Recipe
           = render 'sub_recipe', recipe: recipe_step.stepable
-        - if recipe_step.stepable.nil?
-          Nil Recipe Step, something went wrong
+        - elsif recipe_step.stepable.nil?
+          %small This Step has no content, please delete and re-create it.
         - else
           = render recipe_step.stepable
       %hr

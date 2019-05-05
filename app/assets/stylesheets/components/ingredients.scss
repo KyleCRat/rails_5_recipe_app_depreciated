@@ -1,18 +1,33 @@
 .ingredient {
+  position: relative;
   display: grid;
-  padding: 4px 8px 16px;
-  grid-template-columns: 48px 3fr 1fr;
-  grid-template-rows: 24px 24px auto;
+  padding: 4px 8px;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto auto auto;
   grid-template-areas:
-    'checkbox title measurements'
-    'checkbox technique measurements'
-    '. . measurements';
+    'measurements title'
+    'measurements technique'
+    'measurements .';
+
+  &.has-checkbox {
+    grid-template-columns: 48px 1fr 3fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      'checkbox measurements title'
+      'checkbox measurements technique'
+      '. measurements .';
+  }
 
   .checkbox {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 48px;
     grid-area: checkbox;
+
+    @include breakpoint(large up) {
+      height: 100%;
+    }
 
     input {
       position: absolute;
@@ -52,18 +67,52 @@
     }
   }
 
+  .title,
+  .technique,
+  .measurements {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 1px;
+      background-color: $light;
+      content: '';
+    }
+  }
+
   .title {
+    min-height: 24px;
+    padding-left: 8px;
     grid-area: title;
   }
 
   .technique {
-    min-height: 24px;
-    grid-area: technique;
+    // min-height: 14px;
+    padding-left: 8px;
     font-size: 10px;
+    grid-area: technique;
   }
 
   .measurements {
+    padding-right: 9px;
+    text-align: right;
     grid-area: measurements;
+
+    &::after {
+      right: -1px;
+      left: auto;
+    }
+
+    .measurement {
+      font-size: 12px;
+
+      &:first-child {
+        font-size: 1em;
+      }
+    }
   }
 }
 

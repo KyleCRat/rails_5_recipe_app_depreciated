@@ -1,11 +1,12 @@
-.ingredient
+.ingredient{class: ('has-checkbox' if defined?(f))}
   - if defined?(f)
     .checkbox
       = f.input step_ingredient.ingredient_id, as: :boolean, label: false
   .title
     = step_ingredient.ingredient.title
-  .technique
-    = step_ingredient&.technique&.title
+  - if step_ingredient.technique.present?
+    .technique
+      = step_ingredient&.technique&.title
   .measurements
     - if step_ingredient.measurements.many?
       .total.measurement= step_ingredient.total_measurement.pluralize

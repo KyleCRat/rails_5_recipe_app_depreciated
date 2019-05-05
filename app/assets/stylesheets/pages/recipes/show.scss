@@ -16,7 +16,7 @@
 
   @include breakpoint(xlarge up) {
     grid-template-areas:
-      'title ingredients'
+      'title .'
       'steps ingredients';
     grid-template-columns: 1fr 416px;
   }
@@ -29,7 +29,7 @@
     grid-area: ingredients;
   }
 
-  .steps {
+  .recipe-steps {
     grid-area: steps;
   }
 }
