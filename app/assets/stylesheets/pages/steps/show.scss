@@ -1,11 +1,19 @@
 // render Step
 .step {
   display: grid;
-  grid-template-columns: 2fr 3fr;
-  grid-template-areas:
-  'title ingredients'
-  'description description';
   width: 100%;
+  grid-template-columns: 100%;
+  grid-template-areas:
+  'title'
+  'ingredients'
+  'description ';
+
+  @include breakpoint(large up) {
+    grid-template-columns: 2fr 3fr;
+    grid-template-areas:
+    'title ingredients'
+    'description description';
+  }
 
   .title {
     grid-area: title;
