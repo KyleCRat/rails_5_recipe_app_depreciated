@@ -69,6 +69,9 @@ gem 'draper'
 # Javascript
 ##########################################
 
+# Small hack to allow jquery-ui to work on mobile
+gem 'touchpunch-rails', '>= 1.0.3'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
