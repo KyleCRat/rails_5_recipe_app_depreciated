@@ -5,6 +5,7 @@
   grid-template-areas:
   'title ingredients'
   'description description';
+  width: 100%;
 
   .title {
     grid-area: title;
