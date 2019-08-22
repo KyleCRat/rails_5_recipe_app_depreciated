@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_11_07_132535) do
   create_table "measurements", force: :cascade do |t|
     t.bigint "step_ingredient_id"
     t.string "unit"
-    t.float "scalar"
+    t.decimal "scalar"
     t.text "purpose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

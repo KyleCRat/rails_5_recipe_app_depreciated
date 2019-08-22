@@ -31,24 +31,27 @@ class Unit
   def pluralize
     separator = RubyUnits.configuration.separator
 
-    case units
-    when 'fl oz'
-      "#{scalar.to_f} #{separator} #{units.to_s.pluralize(scalar)}"
-    else
-      unit = ''
+    # case units
+    # when 'fl oz'
+    #   "#{scalar.to_f} #{separator} #{units.to_s.pluralize(scalar)}"
+    # else
+      pluralize_rational(separator)
+    # end
+  end
 
-      # find the whole unit of the scalar
-      whole = (scalar - (scalar % 1)).to_i
-      # find the remainer of the scalar
-      p (scalar % 1)
-      remainder = (scalar % 1).to_f.to_d.to_r
+  def pluralize_rational(separator)
+    unit = ''
 
-      # insert the whole and remainder if they exist
-      unit << whole.to_s unless whole.zero?
-      unit << " #{remainder}" unless remainder.zero?
+    # find the whole unit of the scalar
+    whole = (scalar - (scalar % 1)).to_i
+    # find the remainer of the scalar
+    remainder = (scalar % 1).to_f.to_d.to_r.rationalize(Rational(0.01))
 
-      "#{unit}#{separator}#{units.to_s.pluralize(scalar)}"
-    end
+    # insert the whole and remainder if they exist
+    unit << whole.to_s unless whole.zero?
+    unit << " #{remainder}" unless remainder.zero?
+
+    "#{unit}#{separator}#{units.to_s.pluralize(scalar)}"
   end
 
   def pluralize_as(unit)

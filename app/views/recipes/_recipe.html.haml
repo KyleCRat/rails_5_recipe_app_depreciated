@@ -1,11 +1,15 @@
 %article.recipe
-  .info
+  .title
     %h1= recipe.title
+
+  .info
     = image_tag('https://placehold.it/1200x500')
     %p= recipe.description
 
   .ingredients
-    = simple_form_for :shopping_list, url: '/shopping_list/update' do |f|
+    = simple_form_for :shopping_list,
+                      url: '/shopping_list/update',
+                      html: { class: 'shopping-list' } do |f|
       = render_combined_ingredients(recipe, f)
       = f.button :submit, 'Add to Shopping List' # TODO: add link
       -# TODO: make ajax update on checkbox click

@@ -27,8 +27,8 @@ $barlow: 'Barlow', sans-serif;
 ////////////////////////////////////////////////////////////////////////////////
 //Font Color
 ////////////////////////////////////////////////////////////////////////////////
-.font-white       { color: $white; }
-.font-black       { color: $black; }
+.font-white { color: $white; }
+.font-black { color: $black; }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Font Weight
@@ -186,7 +186,7 @@ h1,
 h2,
 h3,
 h4 {
-  margin: 0 0 .414em;
+  margin: 0 0 16px;
   font-family: $barlow;
   font-weight: inherit;
   line-height: 1.2;

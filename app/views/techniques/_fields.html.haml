@@ -1,0 +1,8 @@
+.technique-fields.fields
+  %h2 New Technique
+  = f.input :title
+  = f.input :description, as: :text
+
+  = link_to_remove_association('Select Existing Technique', f,
+                               class: 'button button-warn',
+                               wrapper_class: 'technique-fields')

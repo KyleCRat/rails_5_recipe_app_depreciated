@@ -1,0 +1,45 @@
+.select-fields {
+  @include breakpoint(large up) {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 8px 8px 8px;
+
+    .select-field {
+      flex: 1;
+    }
+
+    .or {
+      width: 30px;
+      padding: 6px 0;
+      text-align: center;
+      background-color: $white;
+      border-top: 1px solid $medium-gray;
+      border-bottom: 1px solid $medium-gray;
+    }
+
+    .button {
+      height: 39px;
+      padding: 0 16px;
+      line-height: 39px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .input {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      label {
+        width: 80px;
+        padding-right: 8px;
+        text-align: right;
+      }
+
+      select {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

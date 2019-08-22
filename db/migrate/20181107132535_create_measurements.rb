@@ -5,7 +5,7 @@ class CreateMeasurements < ActiveRecord::Migration[5.2]
     create_table :measurements do |t|
       t.references :step_ingredient, foreign_key: true
       t.string :unit
-      t.float :scalar
+      t.decimal :scalar
       t.text :purpose
 
       t.timestamps

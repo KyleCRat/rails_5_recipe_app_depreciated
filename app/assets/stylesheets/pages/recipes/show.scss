@@ -4,25 +4,32 @@
   grid-template-columns: 1fr;
   grid-template-areas:
     'title'
+    'info'
     'ingredients'
     'steps';
 
   @include breakpoint(large up) {
     grid-template-areas:
-      'title ingredients'
+      'title title'
+      'info ingredients'
       'steps steps';
     grid-template-columns: 1fr 1fr;
   }
 
   @include breakpoint(xlarge up) {
     grid-template-areas:
-      'title .'
+      'title title'
+      'info ingredients'
       'steps ingredients';
     grid-template-columns: 1fr 416px;
   }
 
-  .info {
+  .title {
     grid-area: title;
+  }
+
+  .info {
+    grid-area: info;
   }
 
   .ingredients {

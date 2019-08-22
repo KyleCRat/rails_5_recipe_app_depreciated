@@ -7,5 +7,8 @@ $theme: (
   font:   $font,
   dark:   $dark,
   medium: $medium,
-  light:  $light
+  light:  $light,
+  warn: darken($warn, 50%),
+  notice: darken($notice, 50%),
+  success: darken($success, 50%)
 );

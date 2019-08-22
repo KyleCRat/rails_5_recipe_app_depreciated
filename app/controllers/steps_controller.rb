@@ -79,6 +79,7 @@ class StepsController < ApplicationController
           :id,
           :_destroy,
           :ingredient_id,
+          :technique_id,
           measurements_attributes: [
             :id,
             :unit,
@@ -87,6 +88,12 @@ class StepsController < ApplicationController
             :_destroy
           ],
           ingredient_attributes: [
+            :id,
+            :title,
+            :description,
+            :_destroy
+          ],
+          technique_attributes: [
             :id,
             :title,
             :description,

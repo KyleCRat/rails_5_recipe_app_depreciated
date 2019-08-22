@@ -1,4 +1,4 @@
-.ingredient{class: ('has-checkbox' if defined?(f))}
+.ingredient{ class: ('has-checkbox' if defined?(f)) }
   - if defined?(f)
     .checkbox
       = f.input step_ingredient.ingredient_id, as: :boolean, label: false

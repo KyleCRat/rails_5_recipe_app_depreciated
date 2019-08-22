@@ -2,4 +2,4 @@
   = render 'steps/fields', f: f
 
   .actions
-    = f.button :submit, 'Save'
+    = f.button :submit, 'Save', data: { disable_with: 'Saving...' }

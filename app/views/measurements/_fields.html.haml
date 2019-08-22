@@ -1,14 +1,19 @@
 .measurement-fields.fields
-  .combined-measurement-field.inline-fields
-    = f.input :scalar,
-              label: false,
-              wrapper_html: { class: 'measurement-scalar' }
+  -# .combined-measurement-field.inline-fields
+  = f.label :measurement,
+            class: 'measurement-label'
 
-    = f.input :unit,
-              as: :select,
-              collection: Unit.measurements.map { |k,v| [v,k] },
-              label: false,
-              wrapper_html: { class: 'measurement-unit' }
+  = f.input :scalar,
+            label: false,
+            wrapper_html: { class: 'measurement-scalar' }
 
-  = link_to_remove_association('Remove Measurement', f,
-                               { wrapper_class: 'measurement-fields' })
+  = f.input :unit,
+            as: :select,
+            collection: Unit.measurements.map { |k, v| [v, k] },
+            label: false,
+            wrapper_html: { class: 'measurement-unit' }
+
+  = link_to_remove_association('&times;'.html_safe,
+                               f,
+                               class: 'button button-warn',
+                               wrapper_class: 'measurement-fields')

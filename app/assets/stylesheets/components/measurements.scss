@@ -1,25 +1,29 @@
 .measurement-fields {
   display: flex;
-  flex-direction: row;
-}
-
-.combined-measurement-field {
-  display: flex;
   align-items: center;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   width: 100%;
-  max-width: 460px;
-  margin: 0 auto;
 
-  div {
+  select,
+  input {
+    margin-bottom: 0;
+  }
+
+  .button {
+    height: 39px;
+    line-height: 39px;
+    border-radius: 0 4px 4px 0;
   }
 }
 
 .measurement-unit {
-  width: 50%;
+  flex-grow: 1;
 }
 
 .measurement-scalar {
-  width: 50%;
+}
+
+.measurement-label {
+  padding-right: 8px;
 }

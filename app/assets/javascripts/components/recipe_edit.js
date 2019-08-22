@@ -6,17 +6,20 @@ Site.recipeEdit = function() {
 
     set_positions();
 
-    $('.order-recipe-steps').sortable({
-        placeholder: "sortable-placeholder",
-        start: function(e, ui) {
-            ui.placeholder.height(ui.item.outerHeight() + 4);
-        },
-        stop: function(e, ui) {
-        }
+    $(document).on('mousedown', '.handle', function(e){
+        $(e.currentTarget).parents('.order-recipe-steps').height($('.order-recipe-steps').outerHeight() + 16);
     });
 
     $('.order-recipe-steps').sortable({
-        handle: '.handle'
+        placeholder: "sortable-placeholder",
+        handle: '.handle',
+        start: function(e, ui) {
+            ui.placeholder.height(ui.item.outerHeight() + 4);
+            $(this).height($(this).height());
+        },
+        stop: function(e, ui) {
+            $(this).height('auto');
+        }
     }).bind('sortupdate', function(e, ui) {
         // array to store new order
         updated_order = [];

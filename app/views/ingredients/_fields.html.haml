@@ -1,6 +1,9 @@
 .ingredient-fields.fields
-  = link_to_remove_association('Select Existing Ingredient', f,
-                               { wrapper_class: 'ingredient-fields' })
+  %h2 New Ingredient
 
   = f.input :title
-  = f.input :description
+  = f.input :description, as: :text
+
+  = link_to_remove_association('Select Existing Ingredient', f,
+                               class: 'button button-warn',
+                               wrapper_class: 'ingredient-fields')

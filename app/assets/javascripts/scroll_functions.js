@@ -25,6 +25,7 @@ Site.scrollFunctions = function() {
 
     //Global Animations
     window.scroll_function_array.push(
-        Site.hideNavOnScroll
+        Site.hideNavOnScroll,
+        Site.stickyIngredients
     );
 };
