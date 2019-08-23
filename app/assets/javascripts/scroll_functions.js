@@ -3,7 +3,7 @@
 Site.scrollFunctions = function() {
 
     //Empty scroll_function_array on nav click
-    $(document).on('turbolinks:visit', function(){
+    $(document).on('turbolinks:visit', function() {
         window.scroll_function_array = [];
     });
 

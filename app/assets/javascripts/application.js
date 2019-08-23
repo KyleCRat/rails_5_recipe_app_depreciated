@@ -80,6 +80,7 @@ function initialize() {
 
     // Fire only on inital site load
     if (Site.isLoading) {
+        window.scroll_function_array = [];
         Site.session.startTime = Date.now();
         Site.isLoading = false;
         Site.scrollCheck();
