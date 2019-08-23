@@ -2,8 +2,11 @@
   .title
     %h1= recipe.title
 
-  .info
-    = image_tag('https://placehold.it/1200x500')
+  .image
+    .full-width-image
+      = image_tag('https://placehold.it/2000x500')
+
+  .description
     %p= recipe.description
 
   .ingredients
