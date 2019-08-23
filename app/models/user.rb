@@ -32,8 +32,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise  :database_authenticatable,
-          #:registerable,
-          #:recoverable,
+          :registerable,
+          :recoverable,
           :rememberable,
           :trackable,
           :validatable
@@ -56,6 +56,14 @@ class User < ApplicationRecord
 
   validate :password_complexity
 
+  attribute :unit_preference
+
+  def unit_preference
+    # TODO: Convert to actual changeable User Preference in database
+    # %i[decimal rational].sample
+    :rational
+  end
+
   def password_complexity
     if password.present? &&
        !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$/)
@@ -64,7 +72,11 @@ class User < ApplicationRecord
   end
 
   def downcase_role
-    self.role.downcase!
+    self.role&.downcase! || self.role = default_role
+  end
+
+  def default_role
+    'user'
   end
 
   # defined roles
@@ -74,7 +86,7 @@ class User < ApplicationRecord
   alias is_admin? admin?
 
   def auth_tier_0?
-    auth_tier <= 0
+    auth_tier.zero?
   end
   alias is_auth_tier_0? auth_tier_0?
 

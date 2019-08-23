@@ -28,18 +28,22 @@ class Unit
     }
   end
 
-  def pluralize
+  def pluralize(current_user = nil)
     separator = RubyUnits.configuration.separator
 
-    # case units
-    # when 'fl oz'
-    #   "#{scalar.to_f} #{separator} #{units.to_s.pluralize(scalar)}"
-    # else
-      pluralize_rational(separator)
-    # end
+    case current_user&.unit_preference
+    when :decimal
+      decimal(separator)
+    else
+      rational(separator)
+    end
   end
 
-  def pluralize_rational(separator)
+  def decimal(separator)
+    "#{format('%g', scalar.to_f)} #{separator} #{units.to_s.pluralize(scalar)}"
+  end
+
+  def rational(separator)
     unit = ''
 
     # find the whole unit of the scalar

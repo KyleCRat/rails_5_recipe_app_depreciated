@@ -12,4 +12,4 @@
       .total.measurement= step_ingredient.total_measurement.pluralize
       .split-notice split into
     - step_ingredient.measurements.each_with_index do |measurement, index|
-      .measurement= measurement.to_unit.pluralize
+      .measurement= measurement.to_unit.pluralize(current_user)

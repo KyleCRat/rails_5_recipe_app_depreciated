@@ -157,14 +157,13 @@ $barlow: 'Barlow', sans-serif;
 // Default Global Font Style
 ////////////////////////////////////////////////////////////////////////////////
 
-html { font-size: 1em; }
+html { font-size: 1.2em; }
 
 body {
   font-family: $roboto;
   font-weight: 400;
   line-height: 1.45;
   color: $font;
-  background-color: $white;
 }
 
 p { margin-bottom: 1.3em; }
