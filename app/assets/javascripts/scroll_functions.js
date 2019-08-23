@@ -9,41 +9,26 @@ Site.scrollFunctions = function() {
 
     //Set scroll_function_array based on url
     var url = window.location.pathname;
-    var baseURL = url.split('/')[1]
+    var baseURL = url.split('/')[1];
 
-    switch(baseURL) { //Page specfic Animations && Javascript
+    switch(baseURL) { //All pages behind path
         case 'recipes':
             window.scroll_function_array = [
                 Site.stickyIngredients
             ];
             break;
-        case 'test-page':
-            window.scroll_function_array = [
-                // Site.exampleFunction
-            ];
-            break;
-        default: // Set the scroll_function_array on any page not specified above
-            window.scroll_function_array = [
-                //Site.exampleFunction
-            ];
-            break;
     }
 
     switch(url) { //Page specfic Animations && Javascript
-        case '/recipes/1':
-            window.scroll_function_array.concat([
-                Site.stickyIngredients
-            ]);
-            break;
         case '/':
-            window.scroll_function_array.concat([
+            window.scroll_function_array.push(
                 // Site.exampleFunction
-            ]);
+            );
             break;
         default: // Set the scroll_function_array on any page not specified above
-            window.scroll_function_array.concat([
+            window.scroll_function_array.push(
                 //Site.exampleFunction
-            ]);
+            );
             break;
     }
 

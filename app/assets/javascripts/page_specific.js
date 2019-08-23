@@ -3,9 +3,8 @@
 //   or group of pages under a sub page
 
 Site.pageSpecificJS = function() {
-  //Set scroll_function_array based on url
   var url = window.location.pathname;
-  var baseURL = url.split('/')[1]
+  var baseURL = url.split('/')[1];
 
   //Page specfic Animations && Javascript for url
   // Be sure to have leading '/'
@@ -22,4 +21,4 @@ Site.pageSpecificJS = function() {
       Site.recipeEdit();
       break;
   }
-}
+};
