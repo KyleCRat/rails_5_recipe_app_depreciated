@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
 require 'rails/all'
 
@@ -22,8 +22,11 @@ module SiteTemplate
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults '6.0'
+
     # Look for font's folder within the assets dirctory
-    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
     # Have the rails app use our routes for errors
     config.exceptions_app = self.routes
@@ -32,6 +35,6 @@ module SiteTemplate
     config.active_job.queue_adapter = :sidekiq
 
     # Add precompile to split stylesheet for IE9
-    config.assets.precompile += %w( application_split2.css )
+    config.assets.precompile += %w[application_split2.css]
   end
 end

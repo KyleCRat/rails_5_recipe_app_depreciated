@@ -19,7 +19,7 @@ class RecipeStepsController < ApplicationController
     @recipe_step = RecipeStep.new
   end
 
-  # POST /recipe_steps/new
+  # POST /recipe_steps/build/:id
   def build
     @recipe = Recipe.find(params[:id])
     @recipe_step = RecipeStep.new(recipe: @recipe)

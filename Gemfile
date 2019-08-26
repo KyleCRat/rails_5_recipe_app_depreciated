@@ -6,8 +6,11 @@ source 'https://rubygems.org'
 # Application Structure
 ##########################################
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2'
+# Rails application version
+gem 'rails', '~> 6.0'
+
+# use webpacker for JavaScript compiling
+gem 'webpacker'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -152,7 +155,7 @@ gem 'remotipart'
 gem 'browser'
 
 # Error and Performance monitoring
-gem 'airbrake', '~> 7.1'
+gem 'airbrake'
 gem 'newrelic_rpm'
 
 # Unicorn server in production
@@ -222,4 +225,4 @@ end
 # END | DEVELOPMENT ONLY
 ##########################################
 
-ruby '2.5.3'
+ruby '2.6.3'
