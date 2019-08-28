@@ -1,4 +1,3 @@
-
 Site.stickyIngredients = function() {
     if ($('.ingredients').length && $('.shopping-list').length) {
         offsetX = $('.ingredients').offset().top - 60;

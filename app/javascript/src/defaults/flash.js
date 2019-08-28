@@ -18,7 +18,7 @@ var slideUpFlash = function() {
     var height = $('.flash').outerHeight();
     TweenLite.to(
         $('.flash'),
-        0.25,
+        1,
         {
             y: -height,
             onComplete:destroyFlash

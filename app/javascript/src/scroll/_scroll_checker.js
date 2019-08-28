@@ -20,6 +20,7 @@ window.previousPos = 0;
 window.timestamp = 0;
 
 Site.scrollCheck = function() {
+    console.log('scroll check')
 
   var scrollFrame = requestAnimationFrame(function(timestamp) {
     fireScrollFunctions(timestamp);
