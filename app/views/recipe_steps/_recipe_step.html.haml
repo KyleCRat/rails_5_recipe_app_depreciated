@@ -17,5 +17,6 @@
     .edit-stepable
       -# app/helpers/recipe_steps_helper.rb
       = render_recipe_step_ajax_edit_field(recipe_step.stepable)
+
       .remove-step-button
         = link_to 'Delete Step', recipe_step_path(recipe_step), method: :delete, remote: true

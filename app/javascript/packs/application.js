@@ -43,16 +43,28 @@
 // require 'greensock/TweenMax'
 // require 'greensock/TimelineMax'
 
+// Import jquery
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
+
+// Import Necessary jQuery-UI componentsas
+import 'jquery-ui/ui/widgets/sortable';
+
+// Import Rails-ujs
 import Rails from 'rails-ujs';
 import Turbolinks from 'turbolinks';
+import TweenLite from 'gsap/TweenLite';
+import 'gsap/CSSPlugin';
 import 'foundation-sites';
-import 'jquery-ui-dist/jquery-ui.js';
-// import JQueryUi from 'jquery-ui-bundle';
 import 'slick-carousel';
-import TweenLite from "gsap/TweenLite";
+import { cocoonInitializer } from 'cocoon/app/assets/javascripts/cocoon';
 
 Rails.start();
 Turbolinks.start();
+
+
+cocoonInitializer(window.$, window.jQuery);
 
 // Load Javascript Tree
 import '../src/site.js';
@@ -74,18 +86,13 @@ import '../src/defaults/smooth_anchor.js';
 import '../src/defaults/video.js';
 import '../src/defaults/visible_check.js';
 
+import '../src/settings/console.js';
+import '../src/settings/debug.js';
+
 import '../src/scroll/_scroll_checker.js';
 import '../src/scroll/hide_nav_on_scroll.js';
 import '../src/scroll/paralax_bg.js';
 import '../src/scroll/sticky_ingredients.js';
-
-
-
-require.context('../src/components');
-require.context('../src/defaults');
-require.context('../src/scroll');
-require.context('../src/settings');
-require.context('../src/vendor');
 
 if (Site.logging) console.log('Site Loaded at: '+ new Date().getTime());
 
@@ -129,21 +136,21 @@ function initialize() {
         window.scroll_function_array = [];
         Site.session.startTime = Date.now();
         Site.isLoading = false;
-        // Site.scrollCheck();
-        // Site.nav();
+        Site.scrollCheck();
+        Site.nav();
     }
 
     fireJsInitialized();
 
-    // $(function(){ $(document).foundation(); });
+    $(function(){ $(document).foundation(); });
 
-    // Site.closeMenu();
-    // Site.videoListeners();
-    // Site.scrollFunctions();
+    Site.closeMenu();
+    Site.videoListeners();
+    Site.scrollFunctions();
     Site.pageSpecificJS();
-    // Site.pageSlickSliders();
-    // Site.flash();
-    // Site.killFlashOnClick();
+    Site.pageSlickSliders();
+    Site.flash();
+    Site.killFlashOnClick();
 }
 
 function fireJsInitialized() {
