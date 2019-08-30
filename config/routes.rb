@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :measurements
   resources :ingredients
   resources :techniques
-  resources :recipes
+  resources :recipes, param: :slug
   resources :recipe_steps do
     put :sort, on: :collection
     post :build, on: :member

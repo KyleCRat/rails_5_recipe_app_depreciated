@@ -3,10 +3,10 @@
 #
 # Table name: step_ingredients
 #
-#  id            :bigint(8)        not null, primary key
-#  step_id       :bigint(8)
-#  ingredient_id :bigint(8)
-#  technique_id  :bigint(8)
+#  id            :bigint           not null, primary key
+#  step_id       :bigint
+#  ingredient_id :bigint
+#  technique_id  :bigint
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #

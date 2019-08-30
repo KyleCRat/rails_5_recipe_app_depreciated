@@ -4,10 +4,10 @@
 #
 # Table name: recipe_steps
 #
-#  id            :bigint(8)        not null, primary key
-#  recipe_id     :bigint(8)
+#  id            :bigint           not null, primary key
+#  recipe_id     :bigint
 #  stepable_type :string
-#  stepable_id   :bigint(8)
+#  stepable_id   :bigint
 #  position      :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null

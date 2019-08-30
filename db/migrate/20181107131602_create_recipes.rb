@@ -5,6 +5,7 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
     create_table :recipes do |t|
       t.string :title
       t.text :description
+      t.string :slug, index: { unique: true }
 
       t.timestamps
     end

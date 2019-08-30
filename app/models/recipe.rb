@@ -3,7 +3,7 @@
 #
 # Table name: recipes
 #
-#  id          :bigint(8)        not null, primary key
+#  id          :bigint           not null, primary key
 #  title       :string
 #  description :text
 #  created_at  :datetime         not null
@@ -14,6 +14,8 @@
 #   other Recipes within them.
 class Recipe < ApplicationRecord
   include Stepable
+
+  before_save :set_slug
 
   has_many :recipe_steps, dependent: :destroy
 
@@ -57,5 +59,21 @@ class Recipe < ApplicationRecord
     end
 
     ingredients
+  end
+
+  def to_param
+    slug
+  end
+
+  def set_slug
+    0.step do |i|
+      if i.zero?
+        param_title = title.parameterize
+      else
+        param_title = "#{title.parameterize}-#{i}"
+      end
+      self.slug = param_title
+      break unless Recipe.where(slug: slug).exists?
+    end
   end
 end
