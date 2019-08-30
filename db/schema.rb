@@ -46,8 +46,10 @@ ActiveRecord::Schema.define(version: 2019_08_25_212404) do
   create_table "recipes", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_recipes_on_slug", unique: true
   end
 
   create_table "step_ingredients", force: :cascade do |t|
