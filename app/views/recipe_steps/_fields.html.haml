@@ -5,13 +5,17 @@
     -# If this is a field for adding a new recipe_step, pass the unique UUID
     = f.input :new_uuid, as: :hidden, input_html: { value: @new_uuid }
 
-  = link_to('Select Recipe', 'javascript:void(0);', class: 'stepable-select', 'data-type' => CGI.escapeHTML(render('recipe_steps/stepable_types/select_recipe', f: f).to_str).html_safe)
+  = render_stepable_type_link(f, 'Recipe')
   |
-  = link_to('Select Technique', 'javascript:void(0);', class: 'stepable-select', 'data-type' => CGI.escapeHTML(render('recipe_steps/stepable_types/select_technique', f: f).to_str).html_safe)
+  = render_stepable_type_link(f, 'Technique')
   |
-  = link_to('Select Step', 'javascript:void(0);', class: 'stepable-select', 'data-type' => CGI.escapeHTML(render('recipe_steps/stepable_types/select_step', f: f).to_str).html_safe)
+  = render_stepable_type_link(f, 'Step')
   |
-  = link_to('Build Step', 'javascript:void(0);', class: 'stepable-select', 'data-type' => CGI.escapeHTML(render('recipe_steps/stepable_types/build_step', f: f).to_str).html_safe)
+  = render_stepable_type_link(f)
+
+
 
   .stepable-select-fields
-    = render 'recipe_steps/stepable_types/build_step', f: f
+    -# Renders the correct field if the form needs to be reloaded due to an
+      error. This is a helper method located in recipe_steps_helper.rb
+    = render_stepable_type(f)

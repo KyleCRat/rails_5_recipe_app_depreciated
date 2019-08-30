@@ -1,4 +1,9 @@
 Site.recipeEdit = function() {
+    // $(document).on('click', '.stepable-select', function(e) {
+    //     html = $(e.currentTarget).data('type');
+    //     $(e.currentTarget).siblings('.stepable-select-fields').html(html);
+    // });
+
     $(document).on('click', '.stepable-select', function(e) {
         html = $(e.currentTarget).data('type');
         $(e.currentTarget).siblings('.stepable-select-fields').html(html);

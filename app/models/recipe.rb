@@ -46,7 +46,7 @@ class Recipe < ApplicationRecord
                                 :techniques,
                                 :steps,
                                 :recipe_steps,
-                                reject_if: :all_blank,
+                                # reject_if: :all_blank,
                                 allow_destroy: true
 
   def all_ingredients

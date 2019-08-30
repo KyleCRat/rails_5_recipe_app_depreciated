@@ -1,21 +1,25 @@
 %li.recipe-step{'data-id' => recipe_step.id || @new_uuid}
   .handle
-  - if recipe_step.stepable.class == Recipe
-    -# = render 'sub_recipe', recipe: recipe_step.stepable
-    .sub-recipe
+
+  - if recipe_step.persisted?
+    - if recipe_step.stepable.class == Recipe
+      -# = render 'sub_recipe', recipe: recipe_step.stepable
+      .sub-recipe
+        %h4= recipe_step.stepable.title
+
+        %p= recipe_step.stepable.description
+    - elsif recipe_step.stepable.class == Technique
       %h4= recipe_step.stepable.title
 
       %p= recipe_step.stepable.description
-  - elsif recipe_step.stepable.class == Technique
-    %h4= recipe_step.stepable.title
 
-    %p= recipe_step.stepable.description
-  - if recipe_step.stepable.nil?
+    - if recipe_step.stepable.present?
+      .edit-stepable
+        -# app/helpers/recipe_steps_helper.rb
+        = render_recipe_step_ajax_edit_field(recipe_step.stepable)
+
+        .remove-step-button
+          = link_to 'Delete Step', recipe_step_path(recipe_step), method: :delete, remote: true
+
+  - else
     = render 'inline_form', recipe_step: recipe_step
-
-  - if recipe_step.stepable.present?
-    .edit-stepable
-      -# app/helpers/recipe_steps_helper.rb
-      = render_recipe_step_ajax_edit_field(recipe_step.stepable)
-      .remove-step-button
-        = link_to 'Delete Step', recipe_step_path(recipe_step), method: :delete, remote: true

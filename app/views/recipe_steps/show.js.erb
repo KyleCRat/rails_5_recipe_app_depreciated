@@ -1,7 +1,5 @@
 plain:
 $('#flash-wrapper').html('<%= j render "components/flash", flash: {success: "Successfully Added Step"} %>');
-console.log('Show.js.erb');
-console.log('.recipe-step[data-id=<%= @new_uuid %>]');
 Site.flash();
 $('.recipe-step[data-id=<%= @new_uuid %>]').before('<%= j render "recipe_steps/recipe_step", recipe_step: @recipe_step %>');
 $('.recipe-step[data-id=<%= @new_uuid %>]').remove();

@@ -1,3 +1,4 @@
-= f.simple_fields_for :stepable, Step.new() do |step|
+- step = f.object&.stepable_type == 'Step' ? f.object.stepable : Step.new()
+= f.simple_fields_for :stepable, step do |step|
   = f.input :stepable_type, as: :hidden, input_html: { value: 'Step' }
   = render 'steps/fields', f: step

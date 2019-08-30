@@ -19,12 +19,14 @@ class RecipeStep < ApplicationRecord
   belongs_to :stepable, polymorphic: true
   belongs_to :recipe
 
+  validate :stepable_is_not_parent_recipe
+
   before_create :set_position
 
   attr_accessor :new_uuid
 
   accepts_nested_attributes_for :stepable,
-                                reject_if: :all_blank,
+                                # reject_if: :all_blank,
                                 allow_destroy: true
 
   default_scope -> { order(position: :asc) }
@@ -37,5 +39,9 @@ class RecipeStep < ApplicationRecord
 
   def set_position
     self.position = recipe.recipe_steps.count + 1
+  end
+
+  def stepable_is_not_parent_recipe
+    errors.add(:stepable_id, 'Recipe can not be part of itself.') if stepable == recipe
   end
 end

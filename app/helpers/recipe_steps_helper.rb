@@ -20,4 +20,58 @@ module RecipeStepsHelper
 
     html.html_safe
   end
+
+  # Render the stepable_type appropriate to the returned stepable object
+  #   attached to the form_builder
+  #
+  # This method is used for rendering the appropriate form fields when creating
+  #   a new step in recipes/edit. If a stepable object has a predefined type
+  #   that means that a object is being passed back most likely with an error.
+  #   we want to render that field with the error immedeatly visible. So this
+  #   method takes the type of the stepable object and renders the appropriate
+  #   form field for that object.
+  def render_stepable_type(form_builder)
+    case form_builder.object.stepable_type
+    when 'Recipe'
+      render 'recipe_steps/stepable_types/select_recipe', f: form_builder
+    when 'Technique'
+      render 'recipe_steps/stepable_types/select_technique', f: form_builder
+    else
+      render 'recipe_steps/stepable_types/build_step', f: form_builder
+    end
+
+    # render 'recipe_steps/stepable_types/select_step', f: form_builder
+  end
+
+  # This method takes a form_builder object and a type string and will render
+  #   an approprite link to create that type's form. Recipe, Technique, and Step
+  #   are available to be added to a recipe, if it's anything else (mainly nil)
+  #   we are building a new step.
+  def render_stepable_type_link(form_builder, type = nil)
+    case type
+    when 'Recipe'
+      name    = 'Select Recipe'
+      partial = 'recipe_steps/stepable_types/select_recipe'
+    when 'Technique'
+      name    = 'Select Technique'
+      partial = 'recipe_steps/stepable_types/select_technique'
+    when 'Step'
+      name    = 'Select Step'
+      partial = 'recipe_steps/stepable_types/select_step'
+    else
+      name    = 'Build Step'
+      partial = 'recipe_steps/stepable_types/build_step'
+    end
+
+    build_stepable_type_link(name, partial, form_builder)
+  end
+
+  def build_stepable_type_link(name, partial, form_builder)
+    html = CGI.escapeHTML(render(partial, f: form_builder).to_str).html_safe
+
+    link_to(name,
+            'javascript:void(0)',
+            class: 'stepable-select',
+            'data-type': html)
+  end
 end

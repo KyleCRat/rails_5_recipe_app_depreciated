@@ -5,6 +5,8 @@
 #recipes-edit {
   .recipe-step {
     position: relative;
+    display: flex;
+    flex-direction: column;
     padding: 16px 16px 16px 54px;
     padding-bottom: 24px;
     margin-bottom: 16px;

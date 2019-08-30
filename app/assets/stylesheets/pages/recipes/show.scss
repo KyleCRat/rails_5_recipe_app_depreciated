@@ -9,15 +9,6 @@
     'ingredients'
     'steps';
 
-  // @include breakpoint(large up) {
-  //   grid-template-areas:
-  //     'title '
-  //     'image '
-  //     'ingredients'
-  //     'steps ';
-  //   grid-template-columns: 1fr 1fr;
-  // }
-
   @include breakpoint(xlarge up) {
     grid-template-areas:
       'title title'

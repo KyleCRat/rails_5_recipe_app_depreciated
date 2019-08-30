@@ -16,12 +16,15 @@
 class Step < ApplicationRecord
   include Stepable
 
+  validates :title, presence: true, length: 1..150
+  validates_presence_of :description
+
   has_many :step_ingredients
   has_many :measurements, through: :step_ingredients
   has_many :ingredients, through: :step_ingredients
 
   accepts_nested_attributes_for :step_ingredients,
-                                reject_if: :all_blank,
+                                # reject_if: :all_blank,
                                 allow_destroy: true
 
   def position(recipe)

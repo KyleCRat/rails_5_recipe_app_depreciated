@@ -23,7 +23,7 @@ class StepIngredient < ApplicationRecord
   accepts_nested_attributes_for :measurements,
                                 :ingredient,
                                 :technique,
-                                reject_if: :all_blank,
+                                # reject_if: :all_blank,
                                 allow_destroy: true
 
   def total_measurement
