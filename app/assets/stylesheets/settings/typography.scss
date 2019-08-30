@@ -186,9 +186,11 @@ h2,
 h3,
 h4 {
   margin: 0 0 16px;
+  overflow: hidden;
   font-family: $barlow;
   font-weight: inherit;
   line-height: 1.2;
+  text-overflow: ellipsis;
 }
 
 h1 {
