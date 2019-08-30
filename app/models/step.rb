@@ -17,7 +17,6 @@ class Step < ApplicationRecord
   include Stepable
 
   validates :title, presence: true, length: 1..150
-  validates_presence_of :description
 
   has_many :step_ingredients
   has_many :measurements, through: :step_ingredients
