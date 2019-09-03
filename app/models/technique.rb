@@ -16,4 +16,6 @@
 #     Sharpening Knives
 class Technique < ApplicationRecord
   include Stepable
+
+  validates_presence_of :title
 end

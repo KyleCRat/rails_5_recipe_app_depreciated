@@ -1,4 +1,4 @@
-= simple_form_for @recipe_step, remote: true do |f|
+= simple_form_for @recipe_step, validate: true, remote: true do |f|
 
   = render 'fields', f: f
 

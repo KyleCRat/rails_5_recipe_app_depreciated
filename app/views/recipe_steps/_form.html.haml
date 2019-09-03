@@ -1,10 +1,4 @@
-= simple_form_for @recipe_step do |f|
-  - if @recipe_step.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@recipe_step.errors.count, "error")} prohibited this recipe_step from being saved:"
-      %ul
-        - @recipe_step.errors.full_messages.each do |message|
-          %li= message
+= simple_form_for @recipe_step, validate: true do |f|
 
   = render 'fields', f: f
 

@@ -5,6 +5,7 @@
         -# TODO: Update to type to search field
         = f.association :ingredient,
                         collection: Ingredient.all,
+                        include_blank: true,
                         selected: f.object.ingredient&.id,
                         prompt: 'Choose an ingredient',
                         wrapper_html: { class: 'select-ingredient' }

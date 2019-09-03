@@ -1,18 +1,27 @@
+$measurement-field-height: 48px;
+
 .measurement-fields {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
 
+  label {
+    height: $measurement-field-height;
+    line-height: $measurement-field-height;
+  }
+
   select,
   input {
+    height: $measurement-field-height;
     margin-bottom: 0;
   }
 
   .button {
-    height: 39px;
-    line-height: 39px;
+    height: $measurement-field-height;
+    margin: 0;
+    line-height: $measurement-field-height;
     border-radius: 0 4px 4px 0;
   }
 }

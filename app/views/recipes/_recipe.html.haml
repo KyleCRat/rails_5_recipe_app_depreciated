@@ -21,7 +21,7 @@
   .recipe-steps
     - recipe.recipe_steps.each_with_index do |recipe_step, i|
       %section.recipe-step
-        %h3.step-position= i + 1
+        .step-position= i + 1
 
         - if recipe_step.stepable.class == Recipe
           = render 'sub_recipe', recipe: recipe_step.stepable

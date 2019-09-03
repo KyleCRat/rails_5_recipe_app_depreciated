@@ -15,6 +15,8 @@
 class Recipe < ApplicationRecord
   include Stepable
 
+  validates_presence_of :title
+
   before_save :set_slug
 
   has_many :recipe_steps, dependent: :destroy

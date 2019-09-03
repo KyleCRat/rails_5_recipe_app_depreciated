@@ -12,6 +12,8 @@
 
 # Ingredient's are included in recipes through the recipe's steps.
 class Ingredient < ApplicationRecord
+  validates_presence_of :title
+
   has_many :step_ingredients, dependent: :destroy
   has_many :steps, through: :step_ingredients
 end

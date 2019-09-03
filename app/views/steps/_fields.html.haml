@@ -6,6 +6,7 @@
   .step-ingredient-association
     = f.simple_fields_for :step_ingredients do |step_ingredient|
       = render 'step_ingredients/fields', f: step_ingredient
+
     .add-step-ingredient
       = link_to_add_association 'Add Ingredient', f, :step_ingredients,
                                 partial: 'step_ingredients/fields'

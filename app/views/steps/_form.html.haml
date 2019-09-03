@@ -1,2 +1,6 @@
-= simple_form_for @step do |f|
+= simple_form_for @step, validate: true do |f|
+
   = render 'fields', f: f
+
+  .actions
+    = f.button :submit, 'Save', data: { disable_with: 'Saving...' }

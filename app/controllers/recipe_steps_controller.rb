@@ -22,12 +22,16 @@ class RecipeStepsController < ApplicationController
   # POST /recipe_steps/build/:id
   def build
     @recipe = Recipe.find(params[:id])
-    @recipe_step = RecipeStep.new(recipe: @recipe)
+    @recipe_step = RecipeStep.new(recipe: @recipe, stepable: Step.new)
+    build_step_ingredient
     @new_uuid = SecureRandom.uuid
   end
 
   # GET /recipe_steps/1/edit
   def edit
+    if @recipe_step.stepable.is_a?(Step)
+      build_step_ingredient
+    end
   end
 
   # POST /recipe_steps
@@ -91,6 +95,12 @@ class RecipeStepsController < ApplicationController
       @recipe_step = RecipeStep.find(params[:id])
     end
 
+    def build_step_ingredient
+      unless @recipe_step.stepable.step_ingredients.any?
+        @recipe_step.stepable.step_ingredients.build
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_step_params
       params.require(:recipe_step).permit(
@@ -108,6 +118,7 @@ class RecipeStepsController < ApplicationController
             :id,
             :_destroy,
             :ingredient_id,
+            :technique_id,
             measurements_attributes: [
               :id,
               :unit,
@@ -116,6 +127,12 @@ class RecipeStepsController < ApplicationController
               :_destroy
             ],
             ingredient_attributes: [
+              :id,
+              :title,
+              :description,
+              :_destroy
+            ],
+            technique_attributes: [
               :id,
               :title,
               :description,

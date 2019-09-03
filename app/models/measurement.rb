@@ -18,6 +18,8 @@
 class Measurement < ApplicationRecord
   belongs_to :step_ingredient
 
+  validates :scalar, presence: true, numericality: true
+
   def to_unit
     Unit.new("#{scalar} #{unit}")
   end

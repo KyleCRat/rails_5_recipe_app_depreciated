@@ -42,3 +42,9 @@
   background-color: $light;
   border: 1px dashed $medium;
 }
+
+.recipe-step {
+  &:last-child {
+    padding-bottom: 0;
+  }
+}

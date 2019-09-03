@@ -1,10 +1,4 @@
-= simple_form_for @recipe, html: { class: 'recipe-form' } do |f|
-  - if @recipe.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@recipe.errors.count, "error")} prohibited this recipe from being saved:"
-      %ul
-        - @recipe.errors.full_messages.each do |message|
-          %li= message
+= simple_form_for @recipe, validate: true, html: { class: 'recipe-form' } do |f|
 
   = render 'fields', f: f
 

@@ -18,6 +18,8 @@
 //= require foundation
 //= require turbolinks
 //= require cocoon
+//= require rails.validations
+//= require rails.validations.simple_form
 
 //= require jquery.slick
 //= require js.cookie
@@ -47,12 +49,22 @@ if (Site.logging) console.log('Site Loaded at: '+ new Date().getTime());
 // Global Watchers
 ///////////////////////////////////////////////////
 
-// When closing an ajax revealed modal destroy it
+// after closing an ajax revealed modal, destroy it
 $(document).on('closed.zf.reveal', '.ajax-reveal', function(e) {
     window.setTimeout(function(){
         $(e.target).foundation('destroy').remove();
     }, 50);
 });
+
+// Whenever cocoon inserts a form element, re-enable client_side_validations
+//   javascript method on the parent form.
+$(document).on('cocoon:after-insert', function(e, insertedItem, originalEvent) {
+    console.log('re-init CSV');
+    insertedItem.closest("form").enableClientSideValidations();
+});
+
+// recipe_step[stepable_attributes][step_ingredients_attributes][1567318630472][ingredient_attributes][title]
+// recipe_step[stepable_attributes][step_ingredients_attributes][new_step_ingredients][ingredient_attributes][title]
 
 ///////////////////////////////////////////////////
 // Initialize all window variable arrays
