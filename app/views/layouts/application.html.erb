@@ -26,11 +26,12 @@
     <title><%= content_for :title %></title>
     <meta name="description" content="<%= meta_description %>">
 
-    <%= split_stylesheet_link_tag "application", debug: false if ['staging','production'].include?(Rails.env)  %>
-    <%= stylesheet_link_tag "application", media: 'all' unless ['staging','production'].include?(Rails.env) %>
+    <%= split_stylesheet_link_tag 'application', debug: false if ['staging','production'].include?(Rails.env)  %>
+    <%= stylesheet_link_tag 'application', media: 'all' unless ['staging','production'].include?(Rails.env) %>
 
     <%= javascript_include_tag :modernizr %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true, :defer => ['staging','production'].include?(Rails.env)  %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true, :defer => ['staging','production'].include?(Rails.env)  %>
+    <%= javascript_pack_tag "application", :defer => ['staging','production'].include?(Rails.env)  %>
 
     <%= csrf_meta_tags %>
   </head>

@@ -15,6 +15,8 @@
 class Recipe < ApplicationRecord
   include Stepable
 
+  has_rich_text :description
+
   validates_presence_of :title
 
   before_save :set_slug

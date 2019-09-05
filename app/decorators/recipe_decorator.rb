@@ -3,10 +3,10 @@ class RecipeDecorator < Draper::Decorator
   decorates_finders
 
   def description_preview
-    if object.description.length > 80
-      object.description[0..80] + '…'
+    if object.description.to_plain_text.length > 80
+      object.description.to_plain_text[0..80] + '…'
     else
-      object.description
+      object.description.to_plain_text
     end
   end
 end
