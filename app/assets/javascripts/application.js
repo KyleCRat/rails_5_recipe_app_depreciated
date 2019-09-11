@@ -43,23 +43,23 @@
 // get the rest of the js tree
 //= require_tree .
 
-if (Site.logging) console.log('Site Loaded at: '+ new Date().getTime());
+if (Site.logging) console.log("Site Loaded at: "+ new Date().getTime());
 
 ///////////////////////////////////////////////////
 // Global Watchers
 ///////////////////////////////////////////////////
 
 // after closing an ajax revealed modal, destroy it
-$(document).on('closed.zf.reveal', '.ajax-reveal', function(e) {
+$(document).on("closed.zf.reveal", ".ajax-reveal", function(e) {
     window.setTimeout(function(){
-        $(e.target).foundation('destroy').remove();
+        $(e.target).foundation("destroy").remove();
     }, 50);
 });
 
 // Whenever cocoon inserts a form element, re-enable client_side_validations
 //   javascript method on the parent form.
-$(document).on('cocoon:after-insert', function(e, insertedItem, originalEvent) {
-    console.log('re-init CSV');
+$(document).on("cocoon:after-insert", function(e, insertedItem, originalEvent) {
+    console.log("re-init CSV");
     insertedItem.closest("form").enableClientSideValidations();
 });
 
@@ -88,7 +88,7 @@ window.paralaxAnimationSpeed = 0.05;
 ///////////////////////////////////////////////////
 function initialize() {
 
-    if (Site.logging) console.log('initialize -> Fired');
+    if (Site.logging) console.log("initialize -> Fired");
 
     // Fire only on inital site load
     if (Site.isLoading) {
@@ -113,9 +113,9 @@ function initialize() {
 }
 
 function fireJsInitialized() {
-    if (Site.logging) console.log('js:initialized fired');
-    var event = document.createEvent('Event');
-    event.initEvent('js:initialized', true, true); //can bubble, and is cancellable
+    if (Site.logging) console.log("js:initialized fired");
+    var event = document.createEvent("Event");
+    event.initEvent("js:initialized", true, true); //can bubble, and is cancellable
     document.dispatchEvent(event);
 }
 
