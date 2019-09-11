@@ -1,0 +1,6 @@
+= simple_form_for @recipe_step, validate: true, remote: true do |f|
+
+  = render 'fields', f: f
+
+  .actions
+    = f.button :submit, 'Save', data: { disable_with: 'Saving...' }

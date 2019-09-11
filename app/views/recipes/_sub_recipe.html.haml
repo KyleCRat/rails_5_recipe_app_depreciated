@@ -1,11 +1,12 @@
 .sub-recipe
+  .subtitle Recipe
   %h2= recipe.title
 
   %p= recipe.description
 
-  .steps
+  .recipe-steps
     - recipe.recipe_steps.each do |recipe_step|
       %section.recipe-step
-        %h4.step-title="Step #{recipe_step.position}"
+        .step-position="#{recipe_step.position}"
         - unless recipe_step.stepable.class == Recipe
           = render recipe_step.stepable

@@ -1,19 +1,6 @@
-= form_for @recipe_step do |f|
-  - if @recipe_step.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@recipe_step.errors.count, "error")} prohibited this recipe_step from being saved:"
-      %ul
-        - @recipe_step.errors.full_messages.each do |message|
-          %li= message
+= simple_form_for @recipe_step, validate: true do |f|
 
-  .field
-    = f.label :recipe
-    = f.text_field :recipe
-  .field
-    = f.label :stepable
-    = f.text_field :stepable
-  .field
-    = f.label :position
-    = f.number_field :position
+  = render 'fields', f: f
+
   .actions
-    = f.submit 'Save'
+    = f.button :submit, 'Save', data: { disable_with: 'Saving...' }

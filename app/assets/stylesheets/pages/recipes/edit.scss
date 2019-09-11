@@ -1,0 +1,27 @@
+.fields {
+  border-radius: 4px;
+}
+
+.recipe-form {
+  padding: 0 4px;
+}
+
+.step-ingredient-fields,
+.technique-fields,
+.ingredient-fields {
+  padding: 4px;
+  margin: 4px 0;
+  background-color: $off-white;
+  border: 1px solid $light;
+}
+
+.measurement-fields {
+  padding: 4px;
+  margin: 4px 0;
+  background-color: $background;
+  border: 1px solid $light;
+}
+
+.edit-stepable {
+  flex-grow: 2;
+}

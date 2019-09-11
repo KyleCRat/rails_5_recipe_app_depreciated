@@ -6,8 +6,11 @@ source 'https://rubygems.org'
 # Application Structure
 ##########################################
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2'
+# Rails application version
+gem 'rails', '~> 6.0'
+
+# use webpacker for JavaScript compiling
+gem 'webpacker'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -39,7 +42,7 @@ gem 'annotate', group: :development
 ##########################################
 
 # Use Sass, SCSS for stylesheets
-gem 'sass-rails'
+gem 'sassc-rails'
 
 # foundation for rails
 gem 'foundation-rails'
@@ -68,6 +71,9 @@ gem 'draper'
 ##########################################
 # Javascript
 ##########################################
+
+# Small hack to allow jquery-ui to work on mobile
+gem 'touchpunch-rails', '>= 1.0.3'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -138,6 +144,9 @@ gem 'cocoon'
 # Pagination at the model level
 #gem 'kaminari'
 
+# Remote form submission
+gem 'remotipart'
+
 ##########################################
 # Webserver and server info
 ##########################################
@@ -146,7 +155,7 @@ gem 'cocoon'
 gem 'browser'
 
 # Error and Performance monitoring
-gem 'airbrake', '~> 7.1'
+gem 'airbrake'
 gem 'newrelic_rpm'
 
 # Unicorn server in production
@@ -201,7 +210,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -216,4 +225,4 @@ end
 # END | DEVELOPMENT ONLY
 ##########################################
 
-ruby '2.5.3'
+ruby '2.6.3'

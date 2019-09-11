@@ -3,10 +3,10 @@
 #
 # Table name: step_ingredients
 #
-#  id            :bigint(8)        not null, primary key
-#  step_id       :bigint(8)
-#  ingredient_id :bigint(8)
-#  technique_id  :bigint(8)
+#  id            :bigint           not null, primary key
+#  step_id       :bigint
+#  ingredient_id :bigint
+#  technique_id  :bigint
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
@@ -18,18 +18,20 @@ class StepIngredient < ApplicationRecord
   belongs_to :ingredient
   belongs_to :technique, required: false
 
-  has_many   :measurements
+  has_many   :measurements, dependent: :destroy
 
   accepts_nested_attributes_for :measurements,
-                                reject_if: :all_blank,
-                                allow_destroy: true
-  accepts_nested_attributes_for :ingredient,
-                                reject_if: :all_blank,
+                                :ingredient,
+                                :technique,
+                                # reject_if: :all_blank,
                                 allow_destroy: true
 
   def total_measurement
-    measurements.inject(0) do |v, m|
+    value = measurements.inject(0) do |v, m|
       v + m.to_unit
     end
+
+    value.convert_to(value.base) unless measurements.collect(&:to_unit).collect(&:units).uniq.one?
+    value
   end
 end

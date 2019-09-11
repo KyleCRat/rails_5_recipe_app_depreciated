@@ -1,6 +1,6 @@
 // Import any fonts
 //   example google font import:
-//@import url(https://fonts.googleapis.com/css?family=Font+One|Font+Two:400,800,700,600,300,200,100,500,900);
+@import url('https://fonts.googleapis.com/css?family=Barlow:200,400,500|Roboto+Condensed:300,400');
 
 //   example font within / assets/fonts
 //@font-face {
@@ -14,6 +14,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Font Variables
 ////////////////////////////////////////////////////////////////////////////////
+$roboto: 'Roboto Condensed', sans-serif;
+$barlow: 'Barlow', sans-serif;
 //$example-font: 'Example Font', serif;
 //$example-second-font: 'Example Font Two', serif;
 
@@ -25,8 +27,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Font Color
 ////////////////////////////////////////////////////////////////////////////////
-.font-white       { color: $white; }
-.font-black       { color: $black; }
+.font-white { color: $white; }
+.font-black { color: $black; }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Font Weight
@@ -155,13 +157,13 @@
 // Default Global Font Style
 ////////////////////////////////////////////////////////////////////////////////
 
-html { font-size: 1em; }
+html { font-size: 1.2em; }
 
 body {
+  font-family: $roboto;
   font-weight: 400;
   line-height: 1.45;
   color: $font;
-  background-color: $white;
 }
 
 p { margin-bottom: 1.3em; }
@@ -183,14 +185,25 @@ h1,
 h2,
 h3,
 h4 {
-  margin: .414em 0;
+  margin: 0 0 16px;
+  overflow: hidden;
+  font-family: $barlow;
   font-weight: inherit;
   line-height: 1.2;
+  text-overflow: ellipsis;
 }
 
 h1 {
   margin-top: 0;
   font-size: 3.157em;
+}
+
+.subtitle {
+  font-family: $barlow;
+  font-size: 1.333em;
+  font-weight: 400;
+  line-height: 1.2;
+  color: lighten($font, 40%);
 }
 
 h2 { font-size: 2.369em; }

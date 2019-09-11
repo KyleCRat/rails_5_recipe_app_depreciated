@@ -37,6 +37,8 @@
   <body class="<%= @site_theme %>" id="<%= @body_id %>">
     <%= render 'layouts/header' %>
 
+    <%= render 'components/flash_wrapper' %>
+
     <main id="content" class="relative">
       <%= yield %>
     </main>
@@ -44,5 +46,6 @@
 
     <%= render 'layouts/footer' %>
 
+    <%#= render 'development/debug' %>
   </body>
 </html>

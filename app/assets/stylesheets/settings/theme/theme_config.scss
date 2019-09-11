@@ -53,7 +53,7 @@
 //   - svg stroke on hover
 //
 //
-//   .btn-{color}
+//   .button-{color}
 //   - buttons - which add on hover darken 10%
 
 // For each theme,loop through all the colors within that theme and create
@@ -111,11 +111,14 @@
   .theme-svg-stroke-all-hover-#{$name} .stroke { &:hover { stroke: #{$color};  } }
 
   // Button colors for backgrounds and fonts and hover
-  .btn {
-    .btn-#{$name} {
+  .button {
+    &.button-#{$name} {
       background-color: #{$color};
 
-      &:hover {
+      &:hover,
+      &:active,
+      &:focus,
+      &:visited {
         background-color: scale-color($color, $lightness: -15%);
       }
     }

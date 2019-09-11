@@ -12,3 +12,13 @@ html.nav-open {
     overflow: hidden;
   }
 }
+
+#content {
+  max-width: 1200px;
+  padding: 15px 10px;
+  margin: 0 auto;
+}
+
+body {
+  background-color: $white;
+}

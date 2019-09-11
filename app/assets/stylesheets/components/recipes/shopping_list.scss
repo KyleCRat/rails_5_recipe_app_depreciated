@@ -1,0 +1,17 @@
+.shopping-list {
+  max-width: 500px;
+  padding: 16px 0;
+  margin: 0 auto;
+  background-color: $background;
+  border: 1px solid $light;
+  border-radius: 4px;
+
+  @include breakpoint(large down) {
+    margin-bottom: 40px;
+  }
+
+  &.sticking {
+    position: fixed;
+    top: 60px;
+  }
+}

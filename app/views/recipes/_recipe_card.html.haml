@@ -1,8 +1,7 @@
-%article.recipe-card
-  = link_to recipe do
-    %h2= recipe.title
+= link_to recipe, class: ['article', 'recipe-card'] do
+  %h2= recipe.title
 
-    %p= recipe.description_preview
+  %p= recipe.description_preview
 
 
 -# %td= link_to 'Show', recipe

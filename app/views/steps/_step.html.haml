@@ -1,7 +1,8 @@
-%h4= step.title
-- if step.step_ingredients.any?
-  %h5 Ingredients for this Step
-- step.step_ingredients.each do |si|
-  = render si
+.step
+  %h4.title= step.title
+  - if step.step_ingredients.any?
+    .ingredients
+      - step.step_ingredients.each do |step_ingredient|
+        = render step_ingredient
 
-%p= step.description
+  %p.description= step.description

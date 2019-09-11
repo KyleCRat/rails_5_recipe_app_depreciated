@@ -1,0 +1,5 @@
+plain:
+$('#flash-wrapper').html('<%= j render "components/flash", flash: {success: "Successfully Added Step"} %>');
+Site.flash();
+$('.recipe-step[data-id=<%= @new_uuid %>]').before('<%= j render "recipe_steps/recipe_step", recipe_step: @recipe_step %>');
+$('.recipe-step[data-id=<%= @new_uuid %>]').remove();

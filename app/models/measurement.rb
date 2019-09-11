@@ -4,10 +4,10 @@
 #
 # Table name: measurements
 #
-#  id                 :bigint(8)        not null, primary key
-#  step_ingredient_id :bigint(8)
+#  id                 :bigint           not null, primary key
+#  step_ingredient_id :bigint
 #  unit               :string
-#  scalar             :float
+#  scalar             :decimal(, )
 #  purpose            :text
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
@@ -17,6 +17,8 @@
 #   how much of something is necessary.
 class Measurement < ApplicationRecord
   belongs_to :step_ingredient
+
+  validates :scalar, presence: true, numericality: true
 
   def to_unit
     Unit.new("#{scalar} #{unit}")

@@ -3,7 +3,7 @@
 #
 # Table name: steps
 #
-#  id          :bigint(8)        not null, primary key
+#  id          :bigint           not null, primary key
 #  title       :string
 #  description :string
 #  created_at  :datetime         not null
@@ -16,11 +16,17 @@
 class Step < ApplicationRecord
   include Stepable
 
+  validates :title, presence: true, length: 1..150
+
   has_many :step_ingredients
   has_many :measurements, through: :step_ingredients
   has_many :ingredients, through: :step_ingredients
 
   accepts_nested_attributes_for :step_ingredients,
-                                reject_if: :all_blank,
+                                # reject_if: :all_blank,
                                 allow_destroy: true
+
+  def position(recipe)
+    recipe_steps.find_by(recipe: recipe)&.position
+  end
 end

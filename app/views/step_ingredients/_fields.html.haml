@@ -1,22 +1,49 @@
 .step-ingredient-fields.fields
   .ingredient-association
-    .add-ingredient
-      = link_to_add_association 'Add New Ingredient', f, :ingredient,
-                                partial: 'ingredients/fields'
-    .new-ingredient
-      -# TODO: Update to type to search field
-      = f.association :ingredient,
-                      collection: Ingredient.all,
-                      selected: f.object.id,
-                      prompt: 'Choose an ingredient',
-                      wrapper_html: { class: 'select-ingredient' }
+    .ingredient-select-fields.fields.select-fields
+      .select-ingredient.select-field
+        -# TODO: Update to type to search field
+        = f.association :ingredient,
+                        collection: Ingredient.all,
+                        include_blank: true,
+                        selected: f.object.ingredient&.id,
+                        prompt: 'Choose an ingredient',
+                        wrapper_html: { class: 'select-ingredient' }
+      %span.or or
+      .add-ingredient.add-field
+        = link_to_add_association 'Add New Ingredient', f, :ingredient,
+                                  partial: 'ingredients/fields',
+                                  class: 'button button-medium',
+                                  data: { 'association-insertion-traversal' => 'closest',
+                                          'association-insertion-node' => '.ingredient-association',
+                                          'association-insertion-method' => :prepend }
+  .technique-association
+    .technique-select-fields.fields.select-fields
+      .select-technique.select-field
+        -# TODO: update to type to search field
+        = f.association :technique,
+                        collection: Technique.all,
+                        include_blank: true,
+                        selected: f.object.technique&.id,
+                        prompt: 'Choose a Technique',
+                        wrapper_html: { class: 'select-technique' }
+      %span.or or
+      .add-technique.add-field
+        = link_to_add_association 'Add New Technique', f, :technique,
+                                    partial: 'techniques/fields',
+                                    class: 'button button-medium',
+                                    data: { 'association-insertion-traversal' => 'closest',
+                                            'association-insertion-node' => '.technique-association',
+                                            'association-insertion-method' => :prepend }
 
   .measurement-association
     = f.simple_fields_for :measurements do |measurement|
       = render 'measurements/fields', f: measurement
     .add-measurement
       = link_to_add_association 'Add Measurement', f, :measurements,
+                                class: 'button button-medium',
                                 partial: 'measurements/fields'
 
   = link_to_remove_association('Remove Ingredient', f,
-                               { wrapper_class: 'step-ingredient-fields' })
+                               class: 'button button-warn',
+                               wrapper_class: 'step-ingredient-fields')

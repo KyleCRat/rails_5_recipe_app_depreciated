@@ -1,14 +1,27 @@
 .flash {
-  position: relative;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
   display: block;
-  width: 100%;
-  max-width: 1232px;
   padding: 16px;
-  margin: 0 auto 16px;
   color: $black;
   background-color: $off-white;
   border-radius: 4px;
   transition: background-color .25s ease-out, box-shadow .25s ease-out;
+
+  &::after {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+    font-size: 30px;
+    line-height: 36px;
+    cursor: pointer;
+    content: '×';
+  }
 
   &.error,
   &.alert,

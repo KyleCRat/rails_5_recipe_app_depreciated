@@ -9,4 +9,4 @@
   = render 'fields', f: f
 
   .actions
-    = f.submit 'Save'
+    = f.button :submit, 'Save', data: { disable_with: 'Saving...' }

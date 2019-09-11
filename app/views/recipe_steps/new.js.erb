@@ -1,0 +1,4 @@
+plain:
+$('.recipe-step[data-id=<%= @new_uuid %>]').remove();
+$('.order-recipe-steps').append('<%= j render "recipe_steps/recipe_step", recipe_step: @recipe_step %>');
+Site.flash();

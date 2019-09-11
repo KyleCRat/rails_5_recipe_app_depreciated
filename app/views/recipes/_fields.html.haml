@@ -2,14 +2,14 @@
   = f.input :title
   = f.input :description
 
-  %hr
+  -# %h1 Step Position
+  -# = f.simple_fields_for :recipe_steps do |recipe_step|
+  -#   = render 'recipe_steps/fields', f: recipe_step
 
-  = f.simple_fields_for :recipe_steps do |recipe_step|
-    = recipe_step.object.inspect
-
-  .step-association
-    = f.simple_fields_for :steps do |step|
-      = render 'steps/fields', f: step
-    .add-step
-      = link_to_add_association 'Add Step', f, :steps,
-                                partial: 'steps/fields'
+  -# %h1 Steps
+  -# .step-association
+  -#   = f.simple_fields_for :steps do |step|
+  -#     = render 'steps/fields', f: step
+  -#   .add-step
+  -#     = link_to_add_association 'Add Step', f, :steps,
+  -#                               partial: 'steps/fields'

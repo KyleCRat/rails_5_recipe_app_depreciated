@@ -10,13 +10,16 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery-ui
+//= require jquery3
 //= require jquery_ujs
+//= require jquery-ui
+//= require jquery.remotipart
 
 //= require foundation
 //= require turbolinks
 //= require cocoon
+//= require rails.validations
+//= require rails.validations.simple_form
 
 //= require jquery.slick
 //= require js.cookie
@@ -40,18 +43,28 @@
 // get the rest of the js tree
 //= require_tree .
 
-if (Site.logging) console.log('Site Loaded at: '+ new Date().getTime());
+if (Site.logging) console.log("Site Loaded at: "+ new Date().getTime());
 
 ///////////////////////////////////////////////////
 // Global Watchers
 ///////////////////////////////////////////////////
 
-// When closing an ajax revealed modal destroy it
-$(document).on('closed.zf.reveal', '.ajax-reveal', function(e) {
+// after closing an ajax revealed modal, destroy it
+$(document).on("closed.zf.reveal", ".ajax-reveal", function(e) {
     window.setTimeout(function(){
-        $(e.target).foundation('destroy').remove();
+        $(e.target).foundation("destroy").remove();
     }, 50);
 });
+
+// Whenever cocoon inserts a form element, re-enable client_side_validations
+//   javascript method on the parent form.
+$(document).on("cocoon:after-insert", function(e, insertedItem, originalEvent) {
+    console.log("re-init CSV");
+    insertedItem.closest("form").enableClientSideValidations();
+});
+
+// recipe_step[stepable_attributes][step_ingredients_attributes][1567318630472][ingredient_attributes][title]
+// recipe_step[stepable_attributes][step_ingredients_attributes][new_step_ingredients][ingredient_attributes][title]
 
 ///////////////////////////////////////////////////
 // Initialize all window variable arrays
@@ -75,10 +88,11 @@ window.paralaxAnimationSpeed = 0.05;
 ///////////////////////////////////////////////////
 function initialize() {
 
-    if (Site.logging) console.log('initialize -> Fired');
+    if (Site.logging) console.log("initialize -> Fired");
 
     // Fire only on inital site load
     if (Site.isLoading) {
+        window.scroll_function_array = [];
         Site.session.startTime = Date.now();
         Site.isLoading = false;
         Site.scrollCheck();
@@ -94,12 +108,14 @@ function initialize() {
     Site.scrollFunctions();
     Site.pageSpecificJS();
     Site.pageSlickSliders();
+    Site.flash();
+    Site.killFlashOnClick();
 }
 
 function fireJsInitialized() {
-    if (Site.logging) console.log('js:initialized fired');
-    var event = document.createEvent('Event');
-    event.initEvent('js:initialized', true, true); //can bubble, and is cancellable
+    if (Site.logging) console.log("js:initialized fired");
+    var event = document.createEvent("Event");
+    event.initEvent("js:initialized", true, true); //can bubble, and is cancellable
     document.dispatchEvent(event);
 }
 

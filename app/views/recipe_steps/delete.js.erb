@@ -1,0 +1,4 @@
+plain:
+$('#flash-wrapper').html('<%= j render "components/flash", flash: {success: "Successfully Removed Step"} %>');
+Site.flash();
+$('.recipe-step[data-id=<%= @recipe_step.id %>]').remove();

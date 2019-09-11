@@ -3,7 +3,7 @@
 #
 # Table name: techniques
 #
-#  id          :bigint(8)        not null, primary key
+#  id          :bigint           not null, primary key
 #  title       :string
 #  description :string
 #  created_at  :datetime         not null
@@ -16,4 +16,6 @@
 #     Sharpening Knives
 class Technique < ApplicationRecord
   include Stepable
+
+  validates_presence_of :title
 end

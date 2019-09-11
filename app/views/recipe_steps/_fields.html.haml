@@ -1,0 +1,19 @@
+.recipe-step-fields
+  = f.input :recipe_id, as: :hidden, input_html: { value: f.object.recipe.id }
+
+  - if @new_uuid
+    -# If this is a field for adding a new recipe_step, pass the unique UUID
+    = f.input :new_uuid, as: :hidden, input_html: { value: @new_uuid }
+
+  = render_stepable_type_link(f, 'Recipe')
+  |
+  = render_stepable_type_link(f, 'Technique')
+  |
+  = render_stepable_type_link(f, 'Step')
+  |
+  = render_stepable_type_link(f)
+
+  .stepable-select-fields
+    -# Renders the correct field if the form needs to be reloaded due to an
+      error. This is a helper method located in recipe_steps_helper.rb
+    = render_stepable_type(f)

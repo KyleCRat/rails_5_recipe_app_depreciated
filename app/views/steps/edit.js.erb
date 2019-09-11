@@ -1,0 +1,4 @@
+plain:
+$('<%= "#recipe_step_edit_step_#{@step.id}_btn" %>').hide();
+$('<%= "#recipe_step_edit_step_#{@step.id}" %>').html('<%= j render "steps/inline_form", step: @step %>');
+$('.edit_step').enableClientSideValidations();

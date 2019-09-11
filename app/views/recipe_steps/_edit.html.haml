@@ -1,0 +1,5 @@
+%ul.order-recipe-steps
+  - recipe.recipe_steps.each do |recipe_step|
+    = render recipe_step
+
+=link_to('Add Step', build_recipe_step_path(recipe.id), method: :post, remote: :true)

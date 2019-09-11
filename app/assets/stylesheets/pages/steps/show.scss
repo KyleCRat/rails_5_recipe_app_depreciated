@@ -1,0 +1,39 @@
+// render Step
+.step {
+  display: grid;
+  width: 100%;
+  border-left: 3px solid $light;
+  grid-template-columns: 100%;
+  grid-template-areas:
+  'ingredients'
+  'title'
+  'description ';
+
+  // @include breakpoint(large up) {
+  //   grid-template-columns: 2fr 3fr;
+  //   grid-template-areas:
+  //   'title ingredients'
+  //   'description description';
+  // }
+
+  .title {
+    padding-left: 8px;
+    grid-area: title;
+  }
+
+  .ingredients {
+    // border-top: 1px solid;
+    // border-right: 1px solid;
+    // border-bottom: 1px solid;
+    // border-color: $light;
+    // border-radius: 0 4px 4px 0;
+    padding-bottom: 16px;
+    grid-area: ingredients;
+  }
+
+  .description {
+    padding-left: 8px;
+    margin-bottom: 0;
+    grid-area: description;
+  }
+}

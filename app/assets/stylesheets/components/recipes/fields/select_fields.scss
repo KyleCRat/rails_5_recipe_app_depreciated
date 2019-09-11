@@ -1,0 +1,61 @@
+$select-height: 48px;
+
+.select-fields {
+  @include breakpoint(large up) {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 8px 8px;
+
+    .select-field {
+      flex: 1;
+    }
+
+    .or {
+      width: 30px;
+      height: $select-height;
+      padding: 6px 0;
+      text-align: center;
+      background-color: $white;
+      border-top: 1px solid $medium-gray;
+      border-bottom: 1px solid $medium-gray;
+    }
+
+    .button {
+      width: 200px;
+      height: $select-height;
+      padding: 0 16px;
+      margin: 0;
+      line-height: $select-height;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .input {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      select {
+        height: $select-height;
+      }
+
+      label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 120px;
+        padding-right: 8px;
+        text-align: right;
+
+        abbr {
+          margin-right: 8px;
+        }
+      }
+
+      select {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

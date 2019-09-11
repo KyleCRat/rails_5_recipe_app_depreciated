@@ -1,0 +1,43 @@
+.recipe {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'title'
+    'image'
+    'description'
+    'ingredients'
+    'steps';
+
+  @include breakpoint(xlarge up) {
+    grid-template-areas:
+      'title title'
+      'image image'
+      'description ingredients'
+      'steps ingredients';
+    grid-template-columns: 1fr 416px;
+  }
+
+  .title {
+    grid-area: title;
+  }
+
+  .image {
+    margin-bottom: 48px;
+    border-bottom: 1px solid $background;
+    grid-area: image;
+  }
+
+  .description {
+    padding-right: 16px;
+    grid-area: description;
+  }
+
+  .ingredients {
+    grid-area: ingredients;
+  }
+
+  .recipe-steps {
+    grid-area: steps;
+  }
+}
